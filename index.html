@@ -16,6 +16,11 @@
           '<div style="color:#ef4444;padding:40px;font-family:sans-serif;">' +
           '<h2>Error loading app</h2><pre>' + msg + '\n' + (src||'') + ':' + line + '</pre></div>';
       };
+      window.addEventListener('unhandledrejection', function(event) {
+        document.getElementById('root').innerHTML =
+          '<div style="color:#ef4444;padding:40px;font-family:sans-serif;">' +
+          '<h2>Error loading app</h2><pre>' + (event.reason || event) + '</pre></div>';
+      });
     </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
