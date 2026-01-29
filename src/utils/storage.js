@@ -1,13 +1,19 @@
-import { v4 as uuidv4 } from 'uuid';
-
 const MACHINES_KEY = 'ap_slot_machines';
 const CASINOS_KEY = 'ap_slot_casinos';
+
+function generateId() {
+  return crypto.randomUUID();
+}
 
 // --- Machines ---
 
 export function getMachines() {
-  const data = localStorage.getItem(MACHINES_KEY);
-  return data ? JSON.parse(data) : [];
+  try {
+    const data = localStorage.getItem(MACHINES_KEY);
+    return data ? JSON.parse(data) : [];
+  } catch {
+    return [];
+  }
 }
 
 export function saveMachines(machines) {
@@ -16,7 +22,7 @@ export function saveMachines(machines) {
 
 export function addMachine(machine) {
   const machines = getMachines();
-  const newMachine = { ...machine, id: uuidv4(), createdAt: Date.now() };
+  const newMachine = { ...machine, id: generateId(), createdAt: Date.now() };
   machines.push(newMachine);
   saveMachines(machines);
   return newMachine;
@@ -43,8 +49,12 @@ export function getMachineById(id) {
 // --- Casinos ---
 
 export function getCasinos() {
-  const data = localStorage.getItem(CASINOS_KEY);
-  return data ? JSON.parse(data) : [];
+  try {
+    const data = localStorage.getItem(CASINOS_KEY);
+    return data ? JSON.parse(data) : [];
+  } catch {
+    return [];
+  }
 }
 
 export function saveCasinos(casinos) {
@@ -53,7 +63,7 @@ export function saveCasinos(casinos) {
 
 export function addCasino(casino) {
   const casinos = getCasinos();
-  const newCasino = { ...casino, id: uuidv4(), createdAt: Date.now() };
+  const newCasino = { ...casino, id: generateId(), createdAt: Date.now() };
   casinos.push(newCasino);
   saveCasinos(casinos);
   return newCasino;
