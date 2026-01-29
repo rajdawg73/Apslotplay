@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { useStore } from './hooks/useStore';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
@@ -10,7 +10,7 @@ export default function App() {
   const store = useStore();
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage store={store} />} />
@@ -29,6 +29,6 @@ export default function App() {
           <Route path="/casinos" element={<CasinosPage store={store} />} />
         </Routes>
       </Layout>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
