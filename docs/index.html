@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AP Slot Play - Advantage Play Strategy Tracker</title>
+    <script type="module" crossorigin src="./assets/index-6mBKDjIn.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-AfIA0dcI.css">
+  </head>
+  <body>
+    <div id="root">
+      <p style="color:#e8eaed;padding:40px;font-family:sans-serif;">Loading...</p>
+    </div>
+    <script>
+      window.onerror = function(msg, src, line, col, err) {
+        document.getElementById('root').innerHTML =
+          '<div style="color:#ef4444;padding:40px;font-family:sans-serif;">' +
+          '<h2>Error loading app</h2><pre>' + msg + '\n' + (src||'') + ':' + line + '</pre></div>';
+      };
+      window.addEventListener('unhandledrejection', function(event) {
+        document.getElementById('root').innerHTML =
+          '<div style="color:#ef4444;padding:40px;font-family:sans-serif;">' +
+          '<h2>Error loading app</h2><pre>' + (event.reason || event) + '</pre></div>';
+      });
+    </script>
+  </body>
+</html>
