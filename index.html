@@ -7,7 +7,16 @@
     <title>AP Slot Play - Advantage Play Strategy Tracker</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <p style="color:#e8eaed;padding:40px;font-family:sans-serif;">Loading...</p>
+    </div>
+    <script>
+      window.onerror = function(msg, src, line, col, err) {
+        document.getElementById('root').innerHTML =
+          '<div style="color:#ef4444;padding:40px;font-family:sans-serif;">' +
+          '<h2>Error loading app</h2><pre>' + msg + '\n' + (src||'') + ':' + line + '</pre></div>';
+      };
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
