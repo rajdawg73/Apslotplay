@@ -1,22 +1,24 @@
 import { useState, useCallback } from 'react';
 import * as storage from '../utils/storage';
-import { sampleCasinos, sampleMachines } from '../data/seedData';
+import { sampleMachines, SEED_VERSION } from '../data/seedData';
 
-const SEED_KEY = 'ap_slot_seeded';
+const SEED_KEY = 'ap_slot_seed_version';
 
 function seedIfNeeded() {
-  if (localStorage.getItem(SEED_KEY)) return;
+  const currentVersion = localStorage.getItem(SEED_KEY);
+  if (currentVersion === String(SEED_VERSION)) return;
 
-  const casinoIds = sampleCasinos.map((c) => storage.addCasino(c).id);
+  // Add any machines that don't already exist (matched by name)
+  const existingNames = new Set(storage.getMachines().map((m) => m.name));
+
   sampleMachines.forEach((m) => {
-    const { casinoIndexes, ...rest } = m;
-    storage.addMachine({
-      ...rest,
-      casinoIds: casinoIndexes.map((i) => casinoIds[i]),
-    });
+    if (!existingNames.has(m.name)) {
+      const { casinoIndexes, ...rest } = m;
+      storage.addMachine({ ...rest, casinoIds: [] });
+    }
   });
 
-  localStorage.setItem(SEED_KEY, 'true');
+  localStorage.setItem(SEED_KEY, String(SEED_VERSION));
 }
 
 export function useStore() {
