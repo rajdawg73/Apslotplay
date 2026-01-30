@@ -1,6 +1,6 @@
 export const sampleCasinos = [];
 
-export const SEED_VERSION = 6;
+export const SEED_VERSION = 7;
 
 export const sampleMachines = [
   {
@@ -559,6 +559,246 @@ export const sampleMachines = [
       ],
       notes:
         'The devil/jade monkey symbol adds huge variance — frustrating to get close then have it taken away. Requires discipline — cash out immediately when no longer +EV. Landing a free games symbol adds 8 free games (cap at 80). Free games bonus pays well — devil/monkey doesn\'t appear on reels during bonus. Free games generally worth much more than credit prizes. Reels 1-2 are easier to trigger, reel 5 is harder — play reels 1-2 slightly looser and reel 5 tighter. Reels 1-2 reset to 1x bet, reels 3-4 to 2x, reel 5 to 5x. Numbers above reels are silver at reset values, turn yellow when built up. Up to 3 diamonds can land per reel per spin. Game tricks new players who don\'t realize the devil removes diamonds.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Azure Dragon / Emerald Guardian',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features four progressive free games meters — mega, maxi, minor and mini. Free games increase when corresponding symbols land in the fourth reel. These are NOT must-hit-bys — completely random when they trigger. Much more volatile than Wolf Run Eclipse because bonus payouts are extremely inconsistent.',
+      playConditions: [
+        { label: 'Use calculator for exact entry points', operator: '=', value: 'See notes', unit: '' },
+      ],
+      notes:
+        'WARNING: Extremely volatile uncapped progressive. Bonus stacks are credit prizes (not wilds like Wolf Run Eclipse) — only awarded if they connect starting in the first two reels. Stacks rigged to land more frequently in rightmost reels, often serving as line hit blockers. But five connected stacks across reels = massive wins. Stacks contain larger credit prizes further to the right. Mega/maxi = 3 guaranteed stacks per spin, minor = 2, mini = 1. Combos are king — mini payouts can be very weak, usually need support from minor/maxi. Meters don\'t increment every time a corresponding symbol lands — only a "chance" of incrementing. Mega resets to 80 free games; maxi/minor/mini reset to 8. Recommended bankroll: at least 1000x bet (1500-2000x for top progressive). Chasing uncapped progressives is the most common way APs get destroyed — set a loss budget and stick to it. RTP 86%–92%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Bigger Fu Cash Bats: Prosperous Panda / Prosperous Pig',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features bat coins that land in the first reel and persist for 3 spins. While bat coins are active, any coin symbols with credit prizes are awarded when they land consecutively in each reel starting from the second reel. Bat coins also give a chance to trigger the three features above the reels.',
+      playConditions: [
+        { label: 'Bat coins in first reel (coins remaining in holder above reel 1)', operator: '>=', value: 1, unit: '' },
+      ],
+      notes:
+        'Low volatility game requiring minimal investment of just a few spins. Bat coins appear frequently — common to find plays. Up to 3 bat coins can land in reel 1: purple bat = chance at Extra Coins feature, red bat = chance at Multiply Coins feature, gold bat = chance at Jackpot Spins feature. Counter above reel 1 resets to 3 if additional bat coins land. Coins in later reels contain larger credit prizes. Do NOT confuse with "Big Fu Cash Bats" (similar name but NOT an advantage game). Must put a ticket in to check.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Bustin\' Money',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features three free games features — red safe (increasing free games), green safe (increasing ways) and blue safe (increasing multiplier). Bustin\' Money symbols land on middle reels and move to a random safe, either increasing value, opening the safe (triggering feature), or doing nothing. Safes get fatter but are NOT more likely to trigger.',
+      playConditions: [
+        { label: 'Free games (red safe) — chase individually', operator: '>=', value: 22, unit: 'free games' },
+        { label: 'Ways (green safe) — chase individually', operator: '=', value: 'NEVER', unit: '' },
+        { label: 'Multiplier (blue safe) — chase individually', operator: '>=', value: 10, unit: 'x' },
+        { label: 'Combination plays: total points', operator: '>=', value: 12, unit: 'points (see notes for point system)' },
+      ],
+      notes:
+        'POINT SYSTEM for combos: Free games (red) = games above 10 (e.g. 17 free games = 7 pts). Ways (green): 576=0, 1125=2, 1944=4, 3087=6. Multiplier (blue): 2x=0, 3x=1.5, 4x=3, 5x=4.5, 6x=6, 7x=7.5, 8x=9, 9x=10.5, 10x=12. Example: 17 free games (7) + 1125 ways (2) + 4x multiplier (3) = 12 points = play. Opening all three safes triggers jackpot feature (collect coins for mini/minor/maxi/major/grand — can win multiple times). Extremely high variance — expect massive swings. Opening green/blue during bonus adds 10 free games. Blue safe multiplier also applies to random expanding reels in base game. Red safe resets to 10 free games, green to 576 ways, blue to 2x. Only opened safes reset. Checking tip: wait and watch — screen automatically cycles through denominations showing best play.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Cash Up Jackpots',
+    manufacturer: '',
+    strategy: {
+      description:
+        'When Cash Up symbols land on reels (max bet only), they get collected above the first reel. Player can "spend" collected symbols to play bonuses (1 symbol = stack 1, 3 symbols = stack 2, 5 symbols = stack 3). Collected symbols persist after cashout — essentially free money if left behind.',
+      playConditions: [
+        { label: 'Cash Up symbols collected (check bet pad under max bet)', operator: '>=', value: 1, unit: '' },
+        { label: 'If 5+ collected, always select the 5 Cash Up bonus', operator: '=', value: 'Yes', unit: '' },
+      ],
+      notes:
+        'Basically free money with zero risk when found. Plays left behind because the bonus screen is confusing/gimmicky — players don\'t realize they can play the bonus for free. Extremely profitable AP game. Cash Up symbols only collected at max bet. Base game pay is terrible — large chunk of payout goes to bonus. 1 Cash Up: 10-100 credits, 3 Cash Up: 30-200 credits, 5 Cash Up: 50-300 credits. Never play to collect MORE symbols — if you find 4, just play 3+1 bonuses. 2x multipliers can apply to jackpots. Machine allows up to 16 collected symbols. Don\'t need ticket to play left behind bonuses (but recommended to avoid looking suspicious). Quick to check — just look at bet pad. Check all denominations.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Crackin\' Cash: Grand Venezia / Rio Wonder',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features three balloons above each reel — purple (small credits), green (larger credits) and jackpot balloons. When a balloon lands on a reel, it pushes balloons up one position (top balloon moves off screen). Single rocket = awards one random balloon above; triple rocket = awards all three balloons above.',
+      playConditions: [
+        { label: 'Jackpot balloons (check bet pad)', operator: '>=', value: 3, unit: '' },
+        { label: 'OR jackpot balloons + green balloons', operator: '=', value: '2 jackpot + 4 green', unit: '' },
+        { label: 'Advanced: total balloon value / bet', operator: '>=', value: 200, unit: 'x (value jackpots as 70x, purples as 0.5-1x)' },
+      ],
+      notes:
+        'Balloons get pushed up fairly quickly — unlikely to get down deep. Rigged so lower-value balloons hit more often. Expect frequent losses with occasional jackpot balloon or free games wins. Free games bonus is very lucrative — balloons carry over, no new balloons land, triple rockets land much more often, can win jackpots multiple times. Skip bet levels with fewer than 2 jackpots on bet pad to save time. Balloons don\'t disappear after triggering — can win multiple times. Green balloons: 4x-26.66x bet (avg 15.33x). Purple: 0.266x-1.33x (avg 0.8x). Can tap bet level on touchscreen to check without betting. RTP: 1¢/2¢: 86-90%, 5¢/10¢: 88-92%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Dancing Drums: Golden Drums',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Landing a drum symbol with "+1" increments the multiplier above reel 1 (also shown on bet pad). When drum/wild symbols land in both of the first two reels, the Golden Respin feature triggers. During the Respin, reels 3-5 can expand up to 3 rows. Glowing green drum credit prizes get multiplied by the active multiplier.',
+      playConditions: [
+        { label: 'Multiplier (check it is NOT faded out)', operator: '>=', value: 5, unit: 'x' },
+      ],
+      notes:
+        'Important: make sure multiplier is not faded out — faded = just triggered and will disappear next spin. Free games bonus triggers when drum/wild lands in first 3 reels — can trigger during Golden Respin when credit prize lands in reel 3. Multiplier carries over into bonus. Base game drain is brutal — dead spin after dead spin with occasional fractional-bet line hits. This indicates more payback goes to bonus features. Golden Respin is volatile — sometimes just lands a single 1x green drum. Max multiplier is 8x. Mini/minor jackpots can land in reel 5 during Respin. Ignore coins in bowl above reels — cosmetic only. Only the Golden Drums version has persistent multipliers (not the original Dancing Drums). Check by looking at bet pad.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Double Dragon: Jin Long Jin Bao',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features water rings that lock on the reels for 3 spins. Additional water rings reset the counter to 3. When a coin with a credit value lands inside a water ring, that amount is awarded, plus all coins stacked above drop down and pay. Plays two boards at once — rings can contain multipliers up to 10x.',
+      playConditions: [
+        { label: 'Total water rings + multipliers across both boards', operator: '>=', value: 8, unit: '(count each ring as 1, multiplied ring as its multiplier value)' },
+      ],
+      notes:
+        'Compared to the original Dragon, rings land more frequently but coin stacks have smaller credit values. Multipliers on water rings go up to 10x. Plays with multiple rings spread out = lower variance vs equity concentrated in single high-multiplier ring. Coins can be won more than once with multiple rings on same reel. Game shouts "Dragon!" before winning a stack. Coin stacks can be up to 30 high. Free games bonus: spin wheel for number of games + board height (up to 50 games, 6 symbols tall). Water rings persist entire bonus — can get gigantic wins. Multiple denominations — check all.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Dragon Spin CrossLink: Air / Earth / Fire / Water',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features five bags above the reels that slowly fill with gold when medallion symbols land in corresponding reels below. Any gold medallion may randomly trigger the Dragon Spin feature. During the feature, bags with more gold add larger credit prizes to the reels.',
+      playConditions: [
+        { label: 'Total value of all five bags', operator: '>=', value: 49, unit: '(see notes for bag level values)' },
+      ],
+      notes:
+        'Six bag levels — sparkles differentiate level 6 from level 5. Example: all five bags at level 4 (just below rope) = 35 (5x7) = NOT a play. Dragon Spin feature is extremely volatile — doesn\'t always pay well even with all five bags sparkling. Random multiplier at end of each row (1x to 10x) has huge effect on results. More gold in bags does NOT mean feature is closer to hitting — completely random trigger. The advantage comes from larger credit prizes. Hold & spin style but landing another prize only gives 1 additional spin (not typical 3). Mini/minor/major/mega jackpots can land during feature. Free games feature can also trigger (5+ orbs with credit prizes in base game). After Dragon Spin feature, ALL five bags reset to level 1. Bags tend to fill evenly — uncommon to find mixed full/empty setups.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'God of Winning: Great Hammer / Super Spear',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features frames that lock on the reels. Thor character can randomly smash down his hammer, turning all locked frames into wilds (then they disappear). Also features Wild Zone mode (golden border for 3-5 paid spins) where a Wild Bonus can trigger, adding 8+ frames per spin that turn wild.',
+      playConditions: [
+        { label: 'Locked frames forming a line hit (not "Wild" frames)', operator: '>=', value: 5, unit: 'frames' },
+        { label: 'OR locked frames (more spread out / toward right)', operator: '>=', value: 10, unit: 'frames' },
+        { label: 'OR game in Wild Zone/Wild Bonus mode (golden border)', operator: '=', value: 'Yes', unit: '' },
+      ],
+      notes:
+        'Do NOT count frames that say "Wild" — those disappear next spin. Frames accrue quickly and wild feature triggers frequently. Line hits are very weak though — need MORE frames compared to similar games (Star Goddess/Wu Dragon, Zodiac Lion). Play with 5 frames if they form a line hit shape; closer to 10 if frames are toward the right. Good chance of landing additional frames when spread out. Avoid plays where frames are concentrated entirely in reels 4 and 5. Frames carry over into free games and become wild for entire bonus duration — added value beyond base game.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Happy Blessings / Happy Blossoms',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features coin holders above reels 2, 3 and 4. When 3 coins fill a holder, that reel turns wild for the next 3 spins. Similar to Captain Riches but with important differences in coin collection mechanics.',
+      playConditions: [
+        { label: 'Multipliers in reels 2+3 coin holders total', operator: '>=', value: 10, unit: 'x (count non-multiplier coins as 1x)' },
+        { label: 'OR active wilds in reels 2 and 3', operator: '=', value: 'Yes', unit: '' },
+        { label: 'OR active wilds in reel 4 with multiplier coins (2x/3x)', operator: '=', value: 'Yes', unit: '' },
+      ],
+      notes:
+        'A special red bag symbol can land in middle reel and add regular, 2x or 3x coins to the three middle reels. Like similar AGS games (Pots \'O Luck, Captain Riches), game rules state red bag chances depend on coins already collected — likely misleading in same way where 2 coins collected is extremely common and not always +EV (especially without multiplier coins). Ignore coins in pots and picks revealed above reels — fake indicators that do NOT represent how close you are to triggering features. Can tap bet level on touchscreen to check without betting. RTP: 1¢/2¢: 86-90%, 5¢/10¢: 88-92%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Hold N Gold: Acorn Falls / Hot Spell',
+    manufacturer: '',
+    strategy: {
+      description:
+        'When gold scatter symbols land, they lock for 3 additional spins. Each new gold scatter resets count to 3. Six total scatter symbols (gold or non-gold) trigger the bonus. Gold scatters persist between sessions.',
+      playConditions: [
+        { label: 'Gold scatter symbols collected (check bet pad)', operator: '>=', value: 2, unit: '' },
+        { label: 'OR gold scatter with wheel symbol or large prize', operator: '>=', value: 1, unit: '(worth at least 15x bet)' },
+      ],
+      notes:
+        'Bet pad indicator holds 5 scatter symbols but you need 6 to trigger bonus — different from similar games Ultra Rush Gold and Ultra Rush Gold X. Don\'t need 6 GOLD scatters — any combination of scatter symbols (including non-gold credit values and wheel symbols) triggers bonus. Scatter symbols can contain mini/minor jackpots. Major and grand progressives won during wheel spin in bonus. Gold scatters don\'t act as blockers — symbols behind them are still evaluated (shown as small icon on bottom). Once gold lock count reaches zero, game may randomly grant 3 additional spins. Easy to check by glancing at bet pad — tap buttons for other denominations. RTP: Acorn Falls 86.16%-94.15%, Hot Spell 86.23%-94.02%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Inferno Wheel: Aztec Awards / Polynesian Pays',
+    manufacturer: 'Gaming Arts',
+    strategy: {
+      description:
+        'Features a wheel with persistent prize values. When an Inferno Wheel symbol lands, it either triggers a wheel spin or boosts a wedge\'s prize value. Wedge colors: yellow -> orange -> red -> white as they receive more boosts. Wedge values persist between bet levels.',
+      playConditions: [
+        { label: 'Smallest wedge credit prize / bet', operator: '>=', value: 15, unit: 'x' },
+        { label: 'Advanced: median wedge value / bet', operator: '>=', value: 30, unit: 'x (see notes)' },
+      ],
+      notes:
+        'Under-the-radar AP — most APs don\'t know about it. High variance and complex to evaluate = low competition. On average, costs ~25 units to trigger wheel spin (factoring in free games and occasional large line hits). Aim for wheels with total wedges ~400x bet (really good = 800x). BUT total can be misleading — highest-value wedges (200-300x) are very hard to hit. Focus on MEDIAN wedge, not average. Safest approach: focus on lowest-value wedges to limit downside. Look for few small wedges (<10x) and lots of mid-size (30-60x). Avoid wheels with more than two wedges under 10x. Wedge colors indicate boosts received, NOT necessarily value (small initial + many boosts can be worth less than large initial + no boosts). Boosts increase by bet amount. Inferno Wheel symbol lands ~every 8 spins, ~1 in 8 chance of triggering spin. Symbols only land in reels 2-4 (expand to fill reel as wild). Can check without ticket on Gaming Arts machines. RTP 85%–96%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Knock Knock Guardians: Queen / Raider',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features two bonuses — Symbol Change (left cat, upgraded by white orbs) and Reel Grow (right cat, upgraded by black orbs). Each has 3 levels. Symbol Change upgrades symbols to premium; Reel Grow increases ways (L1: 1024, L2: 3125, L3: 7776). When triggered, spin a wheel with four progressive free spins meters.',
+      playConditions: [
+        { label: 'Purple free spins + both cats at MAX (level 3)', operator: '>=', value: 12, unit: 'purple free spins' },
+        { label: 'Aggressive: purple free spins + one cat MAX + one at level 2', operator: '>=', value: 10, unit: 'purple free spins' },
+      ],
+      notes:
+        'Extremely high variance — bonuses can be duds or 200-400x wins. Purple free spins meter triggers most often during wheel spin — most important meter, limits downside risk. A random meter (red/green/blue/purple) increments by 1 when a bonus is upgraded or awarded. Wheel also includes jackpots (mini/minor/major/grand) — if you hit one, spin again, so you always eventually get free spins. Cracks on cat statues don\'t mean anything — only the level below matters. NEVER chase free spins meters alone or upgraded cats alone — only play when cats are upgraded WITH high purple. After bonus, triggered cat resets to level 1. Can\'t trigger the other cat during bonus, but CAN upgrade the triggered cat. Meter resets: red=50, green=25, blue=10, purple=5. Wilds appear on reels 2-4 only. Can tap bet level to check without betting. RTP 86%–92%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Lucky Haul / March of the Zombies',
+    manufacturer: '',
+    strategy: {
+      description:
+        'When a wild symbol covers an entire reel, it becomes a persistent wild reel that shifts one position to the left every spin.',
+      playConditions: [
+        { label: 'Active wild reels (not in reel 1 — will move off screen)', operator: '>=', value: 1, unit: '(check bet pad for red wild symbols)' },
+      ],
+      notes:
+        'As simple and straightforward as AP games get. Only a few spins of investment needed with a fairly significant edge. Easy to check — just walk by and glance at bet pad for active wild reels. If a wild reel lands on an upgrade/CB radio symbol or on top of another wild reel, it becomes a 2x wild reel (doubles all wins) — but reverts to normal next spin. Free games offers a choice between more spins or more wild reels — same average payout, different volatility. Both versions play the same.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Master Da Dang Jia: Fine Fortunes / Vivid Diamonds',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features a multiplier above the middle reel (starts at 1x, max 18x). When the Master character lands on the middle reel, all coin symbols on other reels are awarded with credit values multiplied by the active multiplier. Each time Master lands WITHOUT coins, multiplier increments by 1x.',
+      playConditions: [
+        { label: 'Multiplier above middle reel', operator: '>=', value: 5, unit: 'x' },
+      ],
+      notes:
+        'Fairly high variance — possible to take big losses if multiplier runs high but only lands 1-2 small coins. Over enough sessions (factoring in free games), should come out ahead. Active multiplier carries over into free games AND mini/minor jackpots on wheel spin. Master character doubles as wild symbol — always nudges to fill entire reel. Multiplier maxes at 18x — not guaranteed to hit there, just can\'t increase beyond it. Coins can contain mini/minor/major jackpots when multiplier is less than 6x. Check by looking at bet pad and switching denominations.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Money Island',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features three progressive free games meters — mini (orange), minor (blue) and maxi (purple). Landing corresponding symbol in reel 5 increments the meter. Bonus symbol in reel 1 + symbol in reel 5 triggers the feature. Also features sticky wild coins in middle three reels that persist for 3 spins.',
+      playConditions: [
+        { label: 'Active sticky wilds ("Winner\'s Wave" + spins above middle reels)', operator: '>=', value: 1, unit: '' },
+        { label: 'Mini (orange) free games', operator: '>=', value: 24, unit: '' },
+        { label: 'Minor (blue) free games', operator: '>=', value: 32, unit: '' },
+        { label: 'Maxi (purple)', operator: '=', value: 'NEVER chase', unit: '' },
+      ],
+      notes:
+        'WARNING: Uncapped progressive. Sticky wilds make this better than standard uncapped progressives — common to find, quick/low-cost play with big upside. Reel 4 sticky wilds not very lucrative alone but good chance of landing additional wilds. Treasure chest in reels 1/5 can add 1-5 wild coins to middle reels. Skull wild coins expand to fill entire reel for 3 spins. Mini bonus: reels 2-4 sticky, minor: 2-5 sticky, maxi: all 5 sticky. Treasure chest during bonus can transform non-sticky reel to sticky. Bonus is very volatile — multiple wild reels = huge wins, but can also be weak. All meters reset to 5, capped at 99. Flames appear at 11 free games but do NOT indicate greater chance. Puff of smoke on reel 5 during suspense spin = bonus about to trigger. Free games meters shown on bet pad — check each bet level individually for sticky wilds.',
     },
     casinoIndexes: [],
   },
