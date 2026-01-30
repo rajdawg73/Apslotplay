@@ -1,6 +1,6 @@
 export const sampleCasinos = [];
 
-export const SEED_VERSION = 8;
+export const SEED_VERSION = 9;
 
 export const sampleMachines = [
   {
@@ -962,6 +962,278 @@ export const sampleMachines = [
       ],
       notes:
         'Select all four windows as the same game (whichever has best numbers). Aristocrat free games are extremely volatile — most reds will be duds, occasional huge wins. Blue usually pays well (4x free games = better chance at multiplier line hits). Chasing blue can take 1-6 hours — have 600 units minimum (1000 safer). Don\'t chase blue unless card building or playing for points/offers. Great for card building — 4 simultaneous games significantly lowers base game volatility. Reset values differ by game: Wild Panther/Pompeii = 12, Buffalo = 10, Fire Light = 7 (why entry points differ). Wild Panther and Pompeii are basically same game. Fire Light is least volatile. All meters capped at 99 — not guaranteed to hit there. Check meters on bet pad — need ticket to check different bet levels.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Bonus Builder: Emerald Spins',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features three bonuses (red, blue, purple). Clover symbols land on reels and either trigger the bonus or build up features: expanded reels (increasing ways), increasing free spins, and removal of lower paying symbols. Each bonus has all three features independently.',
+      playConditions: [
+        { label: 'Use calculator for exact entry points', operator: '=', value: 'See notes', unit: '' },
+      ],
+      notes:
+        'Extremely lucrative AP game — can build into states of massive positive equity. No jackpots and weak base game = huge chunk of return is in bonus features. WARNING: Game is cleverly designed to confuse APs — many independent moving parts make it look like there\'s always something worth playing. Common trap: chasing one mediocre bonus, then a second builds up, creating a perpetual -EV chasing cycle. Must consider TOTAL equity across all three bonuses (equal trigger chances). All three upgrade features synergize — spins are nearly worthless without ways, ways not valuable without symbol removal. Spins act as multiplier for ways + removals. Clover symbols double as wilds. During bonus, clovers can continue upgrading features. After bonus, triggered color resets (243 ways, 8 spins, 0 removed); other two retain built-up values. Left-side expanded reels more valuable (pays left to right). Bet pad shows ways as single number — tap bet level for exact reel heights. Bankroll: 300 units (500 to be safe). RTP 86.18%–94.18%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Brian Christopher\'s World Cruise',
+    manufacturer: 'Gaming Arts',
+    strategy: {
+      description:
+        'Features three bonuses (Wheel of the World, Dance Till You Drop, Stuff Your Face) represented by three ducks above the reels. Duck scatter symbols fatten the ducks and increase meters. Higher meters = better bonus payouts when triggered.',
+      playConditions: [
+        { label: 'Use calculator for exact entry points', operator: '=', value: 'See notes', unit: '' },
+      ],
+      notes:
+        'Duck meter growth is NON-LINEAR — increases quickly at low numbers, slows dramatically at higher ones. So 1 isn\'t as bad as it seems if others are built (e.g. 10-1-10 > 7-7-7). Solid equity doesn\'t develop until ducks are over 5. Features can trigger randomly when any duck symbol lands; 3 of same duck = guaranteed trigger. Wheel of the World: 3 wheel spins with credit prizes + jackpots — most volatile. Dance Till You Drop: persistent wilds over 9 + duck number of free games — least volatile, no jackpots. Stuff Your Face: 4 credit prizes (1-10x bet) multiplied by duck number + 1 guaranteed jackpot (unmultiplied). Can\'t combine features with double/triple pop. After trigger, duck resets to 1. Ducks capped at 16. Can check without ticket on Gaming Arts machines.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Clover Link Xtreme',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features a double clover meter above reel 1. When 5 double clovers are collected, the next hold & spin feature gets multiplied by 2x.',
+      playConditions: [
+        { label: 'Double clovers collected (says "NEXT CLOVER FEATURE X2")', operator: '>=', value: 5, unit: '' },
+        { label: 'Aggressive (higher RTP / card building)', operator: '>=', value: 4, unit: 'double clovers' },
+      ],
+      notes:
+        'Older AP game re-released on newer cabinets — will be around a while. Older cabinet versions often overlooked by newer APs, sometimes hidden in back corners loaded with plays. Extremely high variance — bonus can be incredibly generous with 2x or pay almost nothing. Landing 5+ credit prize symbols triggers hold & spin. Double clovers can land during base game or hold & spin. If 5th double clover lands during feature, that hold & spin gets 2x. Filling entire board with 5 double clovers collected = 4x multiplier. Grand requires 3 grand symbols during hold & spin; mini/minor/major only need 1. 2x multiplier does NOT apply to major/grand. Only the "Xtreme" version is an AP game. Some cabinets have multiple themes at 4 denominations = lots of opportunities. Bankroll: 500 units.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Coin Catch',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Landing a blue gem on a reel locks a gold frame around that position for 3 spins. If a coin lands in a gold frame, the credit prize is awarded.',
+      playConditions: [
+        { label: 'Locked gold frames with blue gems in counter (check bet pad)', operator: '>=', value: 1, unit: '' },
+      ],
+      notes:
+        'Quick, low volatility play lasting only a few spins. Do NOT play frames without blue gems in the counter above — those disappear next spin. Landing a blue gem inside an existing frame resets spin counter to 3. Jackpots can land in gold frames. Frames do NOT carry into (or out of) free spins bonus. Piles of coins and treasure chests are fake indicators — no advantage. RTP 86.15%–94.15%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Coin Kingdom: Aztec / Egyptian',
+    manufacturer: 'Ainsworth',
+    strategy: {
+      description:
+        'Features two MHB progressive jackpots — grand (resets $8,000, MHB $10,000) and major (resets $800, MHB $1,000). Unusual: the major nearly always hits right at $990 (not random like most MHBs).',
+      playConditions: [
+        { label: 'Grand (85% RTP)', operator: '>=', value: 9931, unit: '$' },
+        { label: 'Grand (90% RTP)', operator: '>=', value: 9907, unit: '$' },
+        { label: 'Grand (95% RTP)', operator: '>=', value: 9847, unit: '$' },
+        { label: 'Major (85% RTP)', operator: '>=', value: 972, unit: '$' },
+        { label: 'Major (90% RTP)', operator: '>=', value: 965, unit: '$' },
+        { label: 'Major (95% RTP)', operator: '>=', value: 951, unit: '$' },
+      ],
+      notes:
+        'Major nearly always hits right at $990 — makes EV more predictable, lowers variance, creates more plays (always reaches +EV), and allows card pulling to show losses. Major increases $0.01 per spin at $3 bet (occasionally $0.02). Major runs at 3.5x rate of grand — factor in combo plays. Three discs above reels are fake indicators. All features start with 8 free games; 2+ coin symbols retrigger. Royals Removed = least volatile, Multiplier Wilds = most volatile (feast/famine), Expanded Ways = lots of retriggers. Best wins come from combining 2-3 features. Mystery Match can award major/grand jackpots — predetermined picks. Play lower bet levels on higher denominations (fixed mini/minor scale by denom, not bet size). Wilds only on middle 3 reels. Base game extremely volatile. Min bet to lower variance. Factor in taxes for grand chase.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Grand Buddha Link / Grand Cat Link',
+    manufacturer: '',
+    strategy: {
+      description:
+        'When a player gets a line hit, involved symbols turn into multipliers that persist for 8 spins. Right side multipliers are all 3x. Left side multipliers are 8x, 6x and 5x. Multipliers trigger when a line hit matches the associated symbol.',
+      playConditions: [
+        { label: '8x multiplier active + either 6x or 5x active', operator: '=', value: 'Yes', unit: '' },
+        { label: 'Aggressive: any 8x multiplier active', operator: '=', value: 'Yes', unit: '' },
+        { label: 'Aggressive: both 6x and 5x active + two 3x active', operator: '=', value: 'Yes', unit: '' },
+      ],
+      notes:
+        'Expect to lose the vast majority of plays. Occasional massive line hits (usually 8x multiplier) more than cover losses. Factor in high-paying bonuses. 8x is by far the strongest — 5-of-a-kind pays 4,800 credits vs 6x paying half as much. 3x multipliers are very weak (Q 5-of-a-kind = 300 credits). Multipliers reset to 8 games remaining when line hit triggers that symbol. Do NOT play multipliers saying "0 Games Remaining" (disappear next spin). Bonus wheel triggers frequently but often doesn\'t pay well. 4 bonus symbols = 2 wheel spins. Ignore bowls with coins — "increased number of coins has no effect on game play." Multiple denominations — lots of opportunities.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Huff N\' Puff: We\'ve Had Enuff',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Landing a hard hat on a reel locks a frame (straw -> red wood -> gold brick) and adds a 3-spin counter. Filling an entire reel (all 3 positions) before counter expires awards prizes, with gold brick frames offering the best prizes.',
+      playConditions: [
+        { label: 'Any reel with 3 frames', operator: '=', value: 'Always play', unit: '' },
+        { label: 'Any reel with gold brick frame', operator: '=', value: 'Always play', unit: '' },
+        { label: 'Any reel with 2 red wood frames + 2 spins remaining', operator: '=', value: 'Always play', unit: '' },
+        { label: 'Point system total (see notes)', operator: '>=', value: 14, unit: 'points' },
+      ],
+      notes:
+        'Ignore reels saying "Last spin" (reset next spin). POINT SYSTEM: straw frame = 1 point x spins remaining (e.g. 2 straw + 3 spins = 6 pts). Red wood frame = 4 points x spins remaining (e.g. 2 wood + 2 spins = 16 pts). Low cost play — few spins investment. Expect frequent small losses with occasional bigger wins. Wheel feature triggers frequently (3 buzz saw scatters) and is a big chunk of overall return — think of frames as minimizing losses between wheel features. More spins remaining = more chances to upgrade to gold brick (which you really need). Hard hat in fully upgraded frame auto-adds/upgrades another frame in that reel (or awards small credit if nothing to upgrade). Hard hat does NOT reset spin counter back to 3. Multiple denominations to check.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Lucky Lemmings Stampede',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Lemming symbols land in middle 3 reels and shift down one position per spin. Four types: regular, stampede, super stampede and jackpot. Fox symbol in reels 1 or 5 activates all lemming features on the reels.',
+      playConditions: [
+        { label: 'Any stampede, super stampede or jackpot lemmings', operator: '>=', value: 1, unit: '(ignore bottom row and partial above-reel lemmings)' },
+        { label: 'OR regular lemmings (not both in reel 4)', operator: '>=', value: 2, unit: '' },
+      ],
+      notes:
+        'Very strong AP game. Weak base game line hits = huge chunk of return in lemming features. Low cost, few spins, but can get big wins. Lemmings double as wilds (additional value). Each lemming landing has a chance of shooting up to cliff for free games. Regular lemming: 1-5 jump (2/3 bet each). Stampede: 7-30 jump. Super stampede: 30-100 jump. After each feature, chance of fat lemming adding 2x-5x multiplier (super stampede gets 2x-3x). Jackpot lemming awards mini/minor/major/super/grand (multiplier applies to all except grand). Free games: 3 options, same avg payout, different volatility. Free games scatters can land behind lemmings (no blocking). Multiple denominations to check.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Luckymon Evolutions: All That Glitters / On a Silver Platter',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features three monsters that each represent a bonus. Monsters grow to three different sizes — larger = more valuable bonus when triggered.',
+      playConditions: [
+        { label: 'All three monsters at level 3', operator: '=', value: '3-3-3', unit: '' },
+        { label: 'Aggressive: left (green) at 3 + one other at 3 + one at 2', operator: '=', value: '3-3-2 or 3-2-3', unit: '' },
+      ],
+      notes:
+        'High variance game — even with all three maxed, edge is never very high. May want to skip this game entirely. Most big wins come from double or triple popping (combining 2-3 maxed bonuses). Bankroll: 500 units.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Magic Treasures Gold: Emperor / Empress',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features gold, purple and green money ball symbols that increment meters in three corresponding pots above. Pots can randomly trigger when a money ball lands, with each ball awarding a credit prize. Money balls can have 2x or 3x multipliers (two multipliers = 9x).',
+      playConditions: [
+        { label: 'Gold pot — solo', operator: '=', value: 'NEVER chase', unit: '' },
+        { label: 'Purple pot — solo (high variance warning)', operator: '>=', value: 34, unit: '' },
+        { label: 'Green pot — solo', operator: '>=', value: 19, unit: '' },
+        { label: 'Combo plays: use calculator', operator: '=', value: 'See notes', unit: '' },
+      ],
+      notes:
+        'Solo numbers give ~1% edge on lowest RTP. Every green trigger has a chance of also triggering purple; every purple can also trigger gold. Much higher variance than original Magic Treasures — up to 3 pots at once with up to 9x multiplier. Solo green or green without multipliers often results in loss. Money balls with credit values awarded in base game when landing on 3 adjacent reels starting from reel 1. Resets: gold=15, purple=10, green=5. All capped at 50 (not guaranteed to hit). Chasing gold is a TRAP (difficult + cap at 50). Bankroll: green chase = 400 units, purple chase = 1000 units. Emperor/empress character can randomly award green bonus in base game. Mini/minor/maxi jackpots can get up to 9x multiplier. Treasure under jackpot bonus is fake indicator. Emperor = traditional free games, Empress = cash spins (same AP strategy). RTP: 88%, 89%, 90%, 91% or 93%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Phoenix Link: Confucius Say / General Tso / Queen Chiu / Sensei Master',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Hold & spin feature triggered by accumulating phoenix symbols. Counter resets to random value between 100-1500, must hit before 1888. Successor to Buffalo Link with key differences.',
+      playConditions: [
+        { label: 'Phoenix counter', operator: '>=', value: 1522, unit: '(breakeven)' },
+      ],
+      notes:
+        'WARNING: Extremely high variance. Several APs report monthly earnings DECREASED after adding this game. Similar to Buffalo Link — high risk for small EV. Positive equity exists long-term but needs large volume. Key differences from Buffalo Link: MHB goes to 1888 (not 1800). MHB always triggers hold & spin (not random hold & spin vs free games). Phoenix symbols (with prizes) increase counter (not buffalo heads). Counter resets to random 100-1500 (not always 100 = more plays). Counter increases ~1.1/spin (not ~1.7). Hold & spin: if no phoenix in first 3 spins, retriggering gives extra chances. 6 prizes trigger (not 8). 15 squares (not 20). Free games start with 6 (not 8), retriggers much harder. Double/triple mini/minor/major possible. Queen Chiu/Sensei Master: 2x multiplier wilds in bonus. General Tso/Confucius Say: reels 1&2 and 4&5 spin together. Need small change voucher (<$0.50) to check. Checking trick: tap 3rd/4th/5th bet on lower lines, switch to higher lines and tap 2nd/3rd/5th. Bankroll: 250 units (300 safer). Higher denoms likely higher RTP.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Really Wicked Winnings',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features two MHB progressive jackpots — major (resets $1,000, MHB $2,000) and minor (resets $88, MHB $250).',
+      playConditions: [
+        { label: 'Major (85% RTP)', operator: '>=', value: 1882, unit: '$' },
+        { label: 'Major (90% RTP)', operator: '>=', value: 1833, unit: '$' },
+        { label: 'Major (95% RTP)', operator: '>=', value: 1714, unit: '$' },
+        { label: 'Minor (85% RTP)', operator: '>=', value: 243, unit: '$' },
+        { label: 'Minor (90% RTP)', operator: '>=', value: 240, unit: '$' },
+        { label: 'Minor (95% RTP)', operator: '>=', value: 233, unit: '$' },
+      ],
+      notes:
+        'Secret game many APs are unaware of — MHB text is small at the top and easy to miss. Wicked Winnings titles aren\'t usually thought of as AP games = less competition. Major is much more lucrative than minor — moves twice as fast and can be played much further away. $2,000 major is perfect for 2026 jackpot tax thresholds. Min bet to lower variance — higher bets = more gambling. Use calculators to adjust entries: subtract 1.5% from RTP estimate for major calculator, subtract 2% for minor calculator.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Reel Rainbows',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features two MHB progressive jackpots — jackpot 1 (left, resets $400, MHB $500) and jackpot 2 (right, resets $250, MHB $500). Jackpot 2 has a faster meter.',
+      playConditions: [
+        { label: 'Jackpot 1 left (85% RTP)', operator: '>=', value: 491, unit: '$' },
+        { label: 'Jackpot 1 left (90% RTP)', operator: '>=', value: 487, unit: '$' },
+        { label: 'Jackpot 1 left (95% RTP)', operator: '>=', value: 480, unit: '$' },
+        { label: 'Jackpot 2 right (85% RTP)', operator: '>=', value: 473, unit: '$' },
+        { label: 'Jackpot 2 right (90% RTP)', operator: '>=', value: 463, unit: '$' },
+        { label: 'Jackpot 2 right (95% RTP)', operator: '>=', value: 441, unit: '$' },
+      ],
+      notes:
+        'One of the best MHBs. Right progressive has a fast meter and becomes playable earlier than typical MHB $500 machines. Very little competition — game usually hidden in back corners with older machines, and many APs are completely unaware of it. Use calculator and subtract 3% from RTP estimate for base game return.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Rich Little Sheep: On the Lamb / Wool Street Riches',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features three sheep above the reels that upgrade a hold & spin: left sheep (head start spins), middle sheep (jackpot values), right sheep (extra rows to grid). Colored coins upgrade or trigger with 1, 2, or 3 sheep activated.',
+      playConditions: [
+        { label: 'Right sheep (extra rows)', operator: '>=', value: 5, unit: '' },
+        { label: 'Aggressive (higher RTP / card building): right sheep', operator: '>=', value: 4, unit: '' },
+      ],
+      notes:
+        'Left sheep (head start spins) is MISLEADING — doesn\'t add as much equity as expected (especially for those used to pigs/hens versions). Without right sheep (extra rows), not enough grid space for extra spins to help. With right sheep, not really needed since grid is big enough to keep landing prizes. You really need middle sheep (jackpots) + right sheep (extra rows) for good payouts. Expect losses on solo right sheep pops. Filling all positions adds 1 more row (max 8 tall). Left sheep capped at 20, right sheep capped at 5. Both reset to 1. Bankroll: 300 units.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Screaming Mansion',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features three unlit candles above each reel. Landing a candle symbol lights one. Three lit candles above a reel awards balloon prizes (credits) or bat prizes (chance at Screaming Jackpot feature). Balloons and bats are replaced every spin — only lit candles matter.',
+      playConditions: [
+        { label: 'Reels with 2 lit candles (ignore reels with 3 — they reset)', operator: '>=', value: 3, unit: 'reels' },
+        { label: 'OR total lit candles anywhere', operator: '>=', value: 7, unit: '' },
+        { label: 'Aggressive (higher RTP / card building): total lit candles', operator: '>=', value: 6, unit: '' },
+      ],
+      notes:
+        'Solid, low variance, Golden Egypt style game — many small wins with occasional larger win. Do NOT count reels with 3 lit candles (reset to 0 next spin). Screaming Jackpot feature (triggered by bat): wheel spin determines steps up a staircase with multipliers from 5x to 60x (applied to bet amount, not credit prizes). Additional wheel spin may randomly add more steps. Reaching top of stairs = grand jackpot. Balloon credit prizes can also contain mini/minor jackpots.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Temple Falls: Jungle Adventure',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features a 5x7 grid of coins above the reels that can be awarded during a coin collect feature. Bottom row coins can randomly drop and be awarded, with coins above shifting down. Coins range from 0.625x to 200x (red background = 12.5x+). Wheel coins award jackpot wheel spin.',
+      playConditions: [
+        { label: 'Any red 200x coins anywhere on the board', operator: '>=', value: 1, unit: '' },
+        { label: 'OR bottom two rows of coins total / bet (wheel coins = 35x)', operator: '>=', value: 65, unit: 'x' },
+        { label: 'Calculator for more accurate entries', operator: '=', value: 'See notes', unit: '' },
+      ],
+      notes:
+        'High variance due to two bonus features (symbol upgrade + coin collect). Huge chunk of return is in symbol upgrade feature (no advantage to it). Without hitting that feature, base game return is terrible. Return when chasing coins is extremely dependent on randomly hitting symbol upgrade during chase. Expect big losses without symbol upgrade, big wins with it. Coin collect triggers with 3+ waterfall symbols (3=10 spins, 4=15, 5=20). Retriggers common (only need 2 waterfalls for 5 more spins). Wheel spin: mini=25 units, minor=50 units, major/grand vary by denom. Coins around bowls are fake indicators. Bet pad turns "on fire" easily — don\'t base plays on that alone. RTP: 12 settings from 86.13% to 94.13%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Treasure Blast: Balloon / Fleet',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features a track with prizes on each side of the screen that shift down one position per spin. Cannon symbols land in reels 1 and 5, shooting across to win prizes on the opposite track.',
+      playConditions: [
+        { label: 'Any drum (Balloon) or red envelope (Fleet) on track', operator: '>=', value: 1, unit: '(including above reels)' },
+        { label: 'OR wilds on one track', operator: '>=', value: 3, unit: '' },
+        { label: 'OR any 5x multipliers on track', operator: '>=', value: 1, unit: '' },
+        { label: 'OR combination of wilds + 2x/3x multipliers + 7.5x+ credits', operator: '>=', value: 4, unit: '(any mix)' },
+      ],
+      notes:
+        'Ignore bottom row prizes (move off screen next spin). Wilds: bags with W (Balloon) or rockets (Fleet). Drum/envelope is difficult to hit but significant edge — awards 3-5 wild rockets, 3 credit prizes (1x-7.5x), a 2x/3x/5x multiplier, and possible additional jackpots. Special music plays when drum/envelope is on track. Low cost play — few spins investment. Jackpot prizes on track are common and offer NO advantage — meter below each jackpot is a fake indicator. Credit prizes: 1x-7.5x bet. Multipliers: 2x, 3x, 5x (extremely rare) — apply to all wins except grand. Wild triggers 3-5 rockets turning symbols wild; rocket on existing wild adds multiplier. Cannons can stack up to 4 tall. Special animation before big wins. Bet pad options for both tracks or single track — same strategy for both. RTP 87%–94%.',
     },
     casinoIndexes: [],
   },
