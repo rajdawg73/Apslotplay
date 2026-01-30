@@ -1,6 +1,6 @@
 export const sampleCasinos = [];
 
-export const SEED_VERSION = 5;
+export const SEED_VERSION = 6;
 
 export const sampleMachines = [
   {
@@ -382,6 +382,183 @@ export const sampleMachines = [
       ],
       notes:
         'Numbers above are approximate breakeven — wait higher for more profit. Purple accumulates fastest, green slower, yellow slowest. Large bankroll needed for yellow chases. Avg payouts at MHB: purple 75x bet, green 150x bet, yellow 225x bet. During free games, wilds save a bunch for "grand finale" on final spin. Wilds on wilds become multipliers up to 5x — multiple multipliers on same row = huge payouts. Screen shakes when about to hit free games feature. Blue wilds don\'t show on bet pad — must tap bet levels to check. Rumors of Regal Riches being "nerfed" (blues don\'t run as high) vs Prosperity Pearl. RTP 85%–96%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Rich Little Piggies: Hog Wild / Meal Ticket',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features three progressive free games features — a blue pig (increasing free games), a yellow pig (chance to win jackpot prizes) and a red pig (guaranteed wilds in Hog Wild, or lowest paying symbols removed in Meal Ticket). Players land colored coins that build up the features on corresponding pigs. Pigs get fatter as features build. Triggered randomly — NOT must-hit-bys.',
+      playConditions: [
+        { label: 'Blue pig free games (regardless of others)', operator: '>=', value: 24, unit: 'free games' },
+        { label: 'Blue pig free games (if yellow pig is fat)', operator: '>=', value: 22, unit: 'free games' },
+        { label: 'Blue pig free games (if yellow AND red pigs equally fat)', operator: '>=', value: 20, unit: 'free games' },
+      ],
+      notes:
+        'WARNING: Uncapped progressives — extremely dangerous and volatile. Since features aren\'t guaranteed to hit by a certain point, you can dig yourself into a deeper hole. Unless you trigger a pig quickly, your only hope is triggering two or three pigs at the same time. As pigs get fatter, they are NOT any more likely to hit. Blue pig free games capped at 100 — not guaranteed to hit at that number, just won\'t increase beyond it. Yellow pig (jackpot free games) can pay extremely well when combined with a built-up blue pig. If yellow or red pig triggers without blue, it defaults to 7 free games.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'River Dragons / Fire Wolf 2 / Forest Dragons / Winter of the Dragons / Wolf Queen',
+    manufacturer: 'AGS',
+    strategy: {
+      description:
+        'Features two must-hit-by progressive jackpots of $500 and $5,000. Breakeven entry points below are for an 86% RTP machine.',
+      playConditions: [
+        { label: '$500 progressive', operator: '>=', value: 483, unit: '$' },
+        { label: '$5,000 progressive', operator: '>=', value: 4912, unit: '$' },
+      ],
+      notes:
+        'Many APs take these at lower numbers — anything approaching $480 or $4,900 gets jumped on. Some play early for points/offers or to block other hustlers. Jackpots weighted to hit at the very top — realistic chance at $490 for $500 and $4,990 for $5,000. Can hit earlier but exceedingly rare. Always assume they\'ll go to the very end. Spin at lowest bet level to lower variance — higher bets = more gambling. $500 resets to $200. $5,000 resets to $2,000 or $4,000 depending on settings. Some "Xtreme Jackpots" variants of Wolf Queen and Winter of the Dragons don\'t have MHBs. Forest Dragons may not be weighted to hit at top (unconfirmed). Factor in taxes for $5,000 chase. Recommended bankroll: 5x the jackpot. RTP 86%–95%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Wheel of Fortune 4D More Money',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features multipliers above each reel that increase by 1x when a wild symbol lands. All line hits are multiplied by the active multiplier (highlighted with a border). After triggering, the multiplier resets to 1x. The border slides one space right each spin, cycling from reel 5 back to reel 1.',
+      playConditions: [
+        { label: 'Three yellow multipliers total', operator: '>=', value: 24, unit: 'x (stop after triggering one)' },
+        { label: 'OR any yellow multiplier up next (border directly to left)', operator: '=', value: 'Yes', unit: '' },
+      ],
+      notes:
+        'Multipliers reset to 1x and max at 20x. They turn yellow at 6x. Important: highlighted multiplier doesn\'t reset immediately after a line hit — it resets after the NEXT spin. Check if last play was a win; if so, the multiplier will go away. Don\'t chase single yellow multipliers — it takes 5 spins to cycle back and isn\'t worth the cost. The active multiplier applies to ALL line wins regardless of which reels are involved in the hit.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Wheel of Fortune Wild Spin: Vacation / Night Life',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Operates on a 10-game cycle. Gold frames accumulated during the cycle all turn wild on the 10th spin. Strategy depends on how far into the cycle and the position of locked frames.',
+      playConditions: [
+        { label: 'Game 10 of 10', operator: '=', value: 'NEVER play', unit: '' },
+        { label: 'Game 9 of 10: frames in first 3 reels', operator: '>=', value: 1, unit: 'frame' },
+        { label: 'Games 7-8: frames in first 3 reels, same row', operator: '>=', value: 2, unit: 'frames' },
+        { label: 'Games 5-6: frames in first 4 reels, same row', operator: '>=', value: 3, unit: 'frames' },
+        { label: 'Games 3-4: frames in first 3 reels (or 4 same row)', operator: '>=', value: 5, unit: 'frames' },
+        { label: 'Games 1-2: frames in first 3 reels (or 4 same row)', operator: '>=', value: 6, unit: 'frames' },
+      ],
+      notes:
+        'Check frequently — very popular game. Horizontally connected frames are much better than vertical (wheel bonus symbol in reels 2-4 can block line hits). Frames tend to land in vertical stacks, but horizontal alignment is what you want. More payout goes to wheel bonus and progressives, so line hits aren\'t quite as lucrative as similar games. Aim for 5-of-a-kind or 4-of-a-kind — 3-of-a-kind pays poorly. Earlier in cycle = focus on total frames in first 3 reels. Later in cycle = focus on horizontal alignment. Mid-cycle finds are often worth playing (getting 10-cycle return for half the cost). Game 9 abandoned is almost always worth one spin. Both themes (Vacation and Night Life) use the same strategy.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Wizard Riches',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Complex game with multiple advantage opportunities: delayed wilds (purple-bordered symbols that turn wild next spin), countdown jackpots (icons above reels with HP counters), past mystery multipliers (bookcase on left showing last 5 wins), and future mystery multipliers (bookcase on right with upcoming multiplier).',
+      playConditions: [
+        { label: 'Delayed wilds: two connected L-R in first 4 reels', operator: '=', value: 'Yes', unit: '' },
+        { label: 'OR delayed wilds: three anywhere in first 3 reels', operator: '=', value: 'Yes', unit: '' },
+        { label: 'OR delayed wilds: four anywhere in first 4 reels', operator: '=', value: 'Yes', unit: '' },
+        { label: 'OR countdown jackpots: two icons on adjacent reels (or gap of one)', operator: '=', value: 'Yes', unit: '(with counters remaining)' },
+        { label: 'OR past multiplier: any of last 5 wins (top of bookcase)', operator: '>=', value: 4, unit: 'x bet' },
+        { label: 'OR past multiplier: any of last 5 wins (middle/bottom)', operator: '>=', value: 6, unit: 'x bet (8x for bottom)' },
+        { label: 'OR future multiplier: 4x+ with empty shelf in purple border', operator: '=', value: 'Yes', unit: '(NOT if "Next Win" already highlighted)' },
+      ],
+      notes:
+        'Very good game to hustle due to its confusing nature — lots of things to look for. Delayed wilds = low variance. Countdown jackpots and mystery multipliers = high variance. No free games bonus, so more payback weighted to advantage features. Mystery multipliers do NOT apply to jackpots. Last wins don\'t include jackpot or multiplier wins. Touch left bookcase to illuminate last 5 wins. Countdown jackpot icons: yellow indicators show spins remaining — no yellow = disappears next spin. Three adjacent jackpot symbols = mini, four = minor, five = major.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Wolf Peak / Cat Peak / Fu Ren Wu',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features expanding wilds that persist for 4 spins. Active wilds have a yellow background with orange "WILD" text and a chevron arrow (up or down) indicating expansion direction. Wilds expand to cover the entire reel (4 spaces tall) then disappear.',
+      playConditions: [
+        { label: 'Active yellow wilds in first 3 reels', operator: '>=', value: 1, unit: '' },
+        { label: 'OR active wilds in reel 4 with multipliers', operator: '>=', value: 1, unit: '(only if 2x or 3x multiplier)' },
+      ],
+      notes:
+        'Do NOT play purple wilds — those don\'t stick around. The chevron arrow direction doesn\'t indicate how tall wilds will get — ALL yellow wilds expand to cover the entire reel. Must put money in to check, making it slightly harder to scout. Common to find plays because ploppies don\'t grasp the expanding wilds mechanic. Can pay massively when multiple wilds are active, especially with 2x and 3x multipliers. All three titles (Wolf Peak, Cat Peak, Fu Ren Wu) use the same strategy.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Wolf Run Eclipse / Cats Wild Serengeti',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features four progressive free games meters — mini, minor, major and mega. Free games increase when corresponding bonus symbols land in the fourth reel. These are NOT must-hit-bys — completely random when they trigger. Extremely volatile — only for experienced APs with large bankrolls.',
+      playConditions: [
+        { label: 'Use calculator for exact entry points', operator: '=', value: 'See notes', unit: '' },
+      ],
+      notes:
+        'WARNING: Uncapped progressive — the most common way APs get destroyed. The idea is that the free games meter sometimes goes beyond the point where hitting it more than covers the cost on average. But "on average" is key — if you don\'t trigger in the average number of spins, you just dig a deeper hole. The meter keeps increasing but NOT fast enough to cover losses. It does NOT become more likely to hit the more you play. Set a loss budget and stick to it. Mini = 1 wild reel per spin, minor = 2, major/mega = 3 wild reels. Major and mega wild stacks rigged to land towards the right. Mini/minor/major reset to 5 free games. Mega resets to 100 free games — view it as hitting a jackpot rather than something to chase directly. Mega is virtually a guaranteed handpay even at small bet levels.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Wu Dragon / Star Goddess',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features persistent frames that lock onto the reels. Fireballs occasionally shoot down from the upper right. If a fireball hits inside a frame, that frame and all adjacent symbols turn wild, plus all other frames on the screen also turn wild.',
+      playConditions: [
+        { label: 'Frames in first 4 reels (with >= 5 in reels 2 & 3)', operator: '>=', value: 7, unit: 'frames' },
+        { label: 'OR frames in first 4 reels (>= 3 connected horizontally)', operator: '>=', value: 6, unit: 'frames' },
+        { label: 'OR frames in same row', operator: '>=', value: 4, unit: 'frames (even if not connected)' },
+      ],
+      notes:
+        'Focus on getting 5-of-a-kind line hits — ideally all wilds. 4-of-a-kind pays okay, 3-of-a-kind pays barely anything. Frames in reels 2-3 are MORE valuable than reel 1 (fireball in reel 1 can\'t expand wilds to the left). Middle rows more valuable than top/bottom for same reason. Sometimes better to NOT have frames in reel 1 that could attract a fireball. Fireballs turn ANY symbols wild (even without frames), but frames won\'t clear until a fireball hits inside a frame. Biggest wins come from multiple fireballs hitting multiple frames. Glowing border animation around screen edges signals a big win coming. Only bottom row bet levels (with Portal Lock) contain persistent frames. Sometimes frames disappear when checking — play one spin on any bet level to restore them (may be anti-vulturing feature or bug).',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Zodiac Lion / Zodiac Dragon',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features persistent gold frames that lock on the reels. A lion head symbol (or dragon head in Zodiac Dragon) creates the initial gold frame. When another head symbol lands within any gold frame, all connecting gold frames turn wild. Frames disappear on the next spin.',
+      playConditions: [
+        { label: 'Horizontally connected gold frames (reels 1-4 or 2-5)', operator: '>=', value: 4, unit: 'frames' },
+        { label: 'OR connected frames starting reel 1 or 2 (with >= 8 total in clump)', operator: '>=', value: 3, unit: 'horizontal frames' },
+        { label: 'Do NOT play clumps in reels 3-5 without connections to reels 1-2', operator: '=', value: 'Avoid', unit: '' },
+      ],
+      notes:
+        'One of the most popular AP games but poorly played by most hustlers. Many just play when there are lots of frames regardless of position — you really want 4-of-a-kind or 5-of-a-kind line hits. 3-of-a-kind barely pays. Frames need to be connected horizontally (left to right) not vertically. Top row bets (without Zodiac Wheel) pay much better but landing lion heads is harder. Even $0.60 bet pays well with 5-of-a-kind wilds. Bottom row bet levels give a chance at Zodiac Wheel connecting clumps. More frames on screen = better chance of landing 3 lion symbols for Lion Spin Bonus. Turn down volume before checking. RTP 85%–96%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Sumo Kitty / Lucha Kitty',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features persistent gold frames that lock in place. When a coin symbol containing a credit amount lands in a gold frame, that credit amount transfers to ALL connected gold frames and the player wins the total. Frames disappear on the next spin.',
+      playConditions: [
+        { label: 'Connected gold frames (without credit values already)', operator: '>=', value: 6, unit: 'frames' },
+      ],
+      notes:
+        'Essentially a much more volatile version of Zodiac Lion. Instead of getting wilds, you get a random credit amount that varies significantly — from one third of your bet up to a mini or minor jackpot. Frame LOCATION doesn\'t matter (unlike Zodiac Lion) — play anywhere as long as they\'re connected. If two coins land within connected frames, they combine and the total is multiplied throughout all frames.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Diamonds & Devils Deluxe / Jade Monkey Deluxe',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features prizes above each reel awarded when 3 diamonds are collected. Prizes build up as credit values and free games symbols land. Landing a devil/jade monkey symbol REMOVES one diamond. If no diamonds remain, another devil/monkey RESETS the reel entirely.',
+      playConditions: [
+        { label: 'Free games with 2 diamonds', operator: '>=', value: 8, unit: 'free games' },
+        { label: 'Free games with 1 diamond', operator: '>=', value: 16, unit: 'free games' },
+        { label: 'Free games always (even 0 diamonds)', operator: '>=', value: 24, unit: 'free games' },
+        { label: 'Credit value with 2 diamonds', operator: '>=', value: 10, unit: 'x bet' },
+      ],
+      notes:
+        'The devil/jade monkey symbol adds huge variance — frustrating to get close then have it taken away. Requires discipline — cash out immediately when no longer +EV. Landing a free games symbol adds 8 free games (cap at 80). Free games bonus pays well — devil/monkey doesn\'t appear on reels during bonus. Free games generally worth much more than credit prizes. Reels 1-2 are easier to trigger, reel 5 is harder — play reels 1-2 slightly looser and reel 5 tighter. Reels 1-2 reset to 1x bet, reels 3-4 to 2x, reel 5 to 5x. Numbers above reels are silver at reset values, turn yellow when built up. Up to 3 diamonds can land per reel per spin. Game tricks new players who don\'t realize the devil removes diamonds.',
     },
     casinoIndexes: [],
   },
