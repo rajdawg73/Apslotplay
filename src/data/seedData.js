@@ -1,6 +1,6 @@
 export const sampleCasinos = [];
 
-export const SEED_VERSION = 9;
+export const SEED_VERSION = 10;
 
 export const sampleMachines = [
   {
@@ -1234,6 +1234,70 @@ export const sampleMachines = [
       ],
       notes:
         'Ignore bottom row prizes (move off screen next spin). Wilds: bags with W (Balloon) or rockets (Fleet). Drum/envelope is difficult to hit but significant edge — awards 3-5 wild rockets, 3 credit prizes (1x-7.5x), a 2x/3x/5x multiplier, and possible additional jackpots. Special music plays when drum/envelope is on track. Low cost play — few spins investment. Jackpot prizes on track are common and offer NO advantage — meter below each jackpot is a fake indicator. Credit prizes: 1x-7.5x bet. Multipliers: 2x, 3x, 5x (extremely rare) — apply to all wins except grand. Wild triggers 3-5 rockets turning symbols wild; rocket on existing wild adds multiplier. Cannons can stack up to 4 tall. Special animation before big wins. Bet pad options for both tracks or single track — same strategy for both. RTP 87%–94%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Voodoo Jackpots: Jack\'s Gold',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features two progressive free games meters—green and purple. Both meters start at 6 free games and are capped at 20. The voodoo doll character can randomly appear in the center square to award all prizes on that spin and has a chance of increasing the meters or triggering them.',
+      playConditions: [
+        { label: 'Combined green + purple meters', operator: '>=', value: 32, unit: '' },
+      ],
+      notes:
+        'Not a strong advantage game due to meters being capped at 20. Even with both meters built up (rare to find), you won\'t have a very large edge. Painfully slow game due to character animations. Only recommended for card building or exceptionally high RTP. Free games are high variance — good payouts depend on many retriggers. Possible to trigger both meters at once or hit second meter inside bonus as retrigger. Landing wheel symbol + voodoo doll in center triggers wheel spin awarding: green free games, purple free games, both free games, major jackpot, grand jackpot, nudge (random reel nudges), or upgrade (prizes randomly upgrade). Voodoo doll doubles as wild symbol. Bankroll: at least 700 units. Check by looking at bet pad and switching through denominations.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'What the Duck: Dusty / Snowy',
+    manufacturer: 'Konami',
+    strategy: {
+      description:
+        'Features Explode and Bounty meters that cap at 5. Hold & spin triggered by can/hat symbols in first three reels (one spin + extensions). Explode shoots bullets to upgrade prize symbols (can→hat→barrel→wagon). Bounty lassos ropes to immediately award credit prizes. Meters reset to random values after hold & spin.',
+      playConditions: [
+        { label: 'Basic: Explode meter', operator: '>=', value: 5, unit: '' },
+        { label: 'Basic: Bounty meter', operator: '>=', value: 5, unit: '' },
+        { label: 'Aggressive (higher RTP / card building): Explode', operator: '>=', value: 5, unit: '' },
+        { label: 'Aggressive (higher RTP / card building): Bounty', operator: '>=', value: 3, unit: '' },
+      ],
+      notes:
+        'Skeptical this game is ever +EV except maybe on high RTP settings due to meters resetting to random numbers and being capped at 5. Many APs claim significant profits though. Play safe by avoiding, or take a chance with the entries above. Snowy version (girl duck) may be stronger for AP — meters reset during free games but get +3 added, so entering at 5 means 8 for first hold & spin, and even a reset to 2 still gives 5. Dusty version does NOT reset meters during free games. Explode likely more valuable than Bounty, but they work together — massive wins when Explode upgrades first, then Bounty awards upgraded prizes. Volatile Konami game. Wheel spin during hold & spin multiplies ALL prizes (including mini/minor jackpots) by 2x, 3x, 5x or 10x and can re-spin. Mini/minor in hold & spin; major/grand only on wheel spin. Meters can randomly increment when duck lands in center. Center duck is wild and counts as can/hat for triggering. Landing prize in fourth reel unlocks fifth reel positions. Meters reset even if Explode/Bounty don\'t trigger during hold & spin. Bankroll: 250 units. Multiple denominations to check. RTP: 90.1% to 96.05%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Wu Jin Pen: Fuyu Phoenix / Panda',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features a bowl with a spin counter starting at 5 that increments when coin symbols land. A hold & spin feature can randomly trigger, with the counter determining number of spins. When triggered, it can unlock additional bowls (More Credits, Multiplier, Jackpots, Double Reels) making the bonus more lucrative.',
+      playConditions: [
+        { label: 'Spin counter (85-92% RTP)', operator: '>=', value: 11, unit: '' },
+        { label: 'Spin counter (93-94% RTP)', operator: '>=', value: 10, unit: '' },
+        { label: 'Spin counter (95-96% RTP)', operator: '>=', value: 9, unit: '' },
+      ],
+      notes:
+        'Turns positive much earlier than most APs realize. Value of spins is non-linear — diminishing returns as grid fills up, so 5→10 spins is much more valuable than 15→20. May be more optimal to get larger volume of plays at lower numbers than wait for "safe" 15-20. Extremely high variance bonus. Triggering with only top bowl (spins) unlocked almost always = loss. Real money comes from unlocking all five bowls (Double Reels is most important). Very lucrative AP machine — weak base game means most payout devoted to bonus feature. Possible to fill entire grid (clears and starts new grid). Bonus can trigger with 1-4 coins randomly, 5 coins = guaranteed trigger. More Credits bowl adds credit prizes. Multiplier bowl adds 2x-5x to all credits. Jackpot bowl adds grand/mega/major/minor/mini (not multiplied). Special animation can unlock one additional bowl after bonus starts. Flame on counter at 15 — no math significance. Counter capped at 50. Bankroll: 200 units (400 for worst case). Buy-a-bonus feature triggers with random spins — no advantage. New installs start at 8 or 10 spins (not 5). Coins/jewels in bowls are fake indicators.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Zhao Cai Zhu: Gettin\' Piggy With It / Yo Ho Hog',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features three free games meters—red (starts 25, hits by 100), green (starts 15, hits by 60), blue (starts 10, hits by 40). Pigs land in lanterns on fifth reel to increment corresponding meter. During 10 free games, pigs add frames that upgrade from purple→silver→gold→platinum. Collect symbol awards frame prizes, guaranteed on spin 10.',
+      playConditions: [
+        { label: 'Red meter pigs (solo, ~2% edge at 88% RTP)', operator: '>=', value: 72, unit: '' },
+        { label: 'Green meter pigs (solo, ~2% edge at 88% RTP)', operator: '>=', value: 44, unit: '' },
+        { label: 'Blue meter pigs (solo, ~2% edge at 88% RTP)', operator: '>=', value: 28, unit: '' },
+        { label: 'Calculator recommended for combined meter equity', operator: '=', value: 'See notes', unit: '' },
+      ],
+      notes:
+        'Solo numbers give ~2% edge on lowest RTP (88%). Calculator recommended for combined meter equity (much more accurate). Meters frequently hit early before MHB number, so equity on ALL three meters is important (more so than similar game Regal Riches). Value of pigs is non-linear due to upgrades — 40 pigs pays much more than 2x of 20 pigs. Bonuses are volatile — need many platinum frames for good payout, difficult if collects occur early. Silver frames can award mini jackpot, gold = mini/minor, platinum = minor/major/grand. Chasing red is risky near breakeven — bad bonus can mean huge loss. If pig lands in fully upgraded frame, awards 10x bet (only applies to reel pigs, not guaranteed jump-down pigs). Good game for running coin-in and card pulling. Pig A Prize random feature is predetermined — tap through quickly. Fattening gold pig and treasure above reels are fake indicators. Check on bet pad. Available in 7 RTP settings: 88%, 89%, 90%, 91%, 93%, 95%, 96%.',
     },
     casinoIndexes: [],
   },
