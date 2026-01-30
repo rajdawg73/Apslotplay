@@ -1,6 +1,6 @@
 export const sampleCasinos = [];
 
-export const SEED_VERSION = 3;
+export const SEED_VERSION = 4;
 
 export const sampleMachines = [
   {
@@ -140,6 +140,120 @@ export const sampleMachines = [
       ],
       notes:
         'Under-the-radar game most APs don\'t know about. Only check when no other hustlers nearby. Persistent fish come in stacks — two above reels is always excellent. Max 2 fish above reels at once, max 4 persistent fish on reels. Need at least 2 regular fish symbols plus persistent fish to trigger bonus. Orange fish with credit prizes can also be persistent (they shine too). Penguin/cat face symbol is wild with 2x multiplier. Bonus usually pays very well. Multiple denominations — check all.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Gift of the Nile / Dragon Flame',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features persistent wilds that move down one row every spin. Wilds can land in a queue above the reels (often in big stacks), so you can see them coming before they reach the active reel area.',
+      playConditions: [
+        { label: 'Single wild in reels 1-3 (top/middle row or directly above)', operator: '=', value: 'Yes', unit: '' },
+        { label: 'OR two wilds in reels 1-3 in front 3 queue positions', operator: '=', value: 'Yes', unit: '' },
+        { label: 'OR two wilds same row in reels 1-3 in middle of queue', operator: '=', value: 'Yes', unit: '' },
+        { label: 'OR three wilds same row in reels 1-3 in back of queue', operator: '=', value: 'Yes', unit: '' },
+        { label: 'OR stack of 3+ wilds in reels 1-3 towards back of queue', operator: '=', value: 'Yes', unit: '' },
+      ],
+      notes:
+        'Focus on wilds in the first three reels only. The further back upcoming wilds are in the queue, the more wilds you need to justify the cost. Wilds in the queue don\'t always come from the very back — they can randomly appear anywhere, giving more chances for additional wilds. Three-of-a-kind with premium symbols pays fairly well. Free games bonus symbols are NOT persistent — only wilds are. Wilds from bonus do not transfer back to base game.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Golden Egypt Grand',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features coin holders above each reel. When a holder is filled, that reel turns wild for 2-4 spins depending on number of coins. Format: coins per reel (e.g. 1-2-0-0-0 = 1 coin reel 1, 2 coins reel 2, 0 in reels 3-5).',
+      playConditions: [
+        { label: 'Two of first 3 reels one coin away (e.g. 1-2-0-0-0)', operator: '=', value: 'Yes', unit: '' },
+        { label: 'OR 6 coins in first 4 reels (e.g. 1-1-2-2-0)', operator: '=', value: 'Yes', unit: '' },
+        { label: 'OR active wilds in reels 1-3 (gold border + coins)', operator: '=', value: 'Yes', unit: '' },
+        { label: 'OR active wild reel 4 + reel 1-3 one coin away', operator: '=', value: 'Yes', unit: '(1-2 spins to combo)' },
+        { label: 'OR active wilds in both reels 4 and 5', operator: '=', value: 'Yes', unit: '' },
+      ],
+      notes:
+        'Extremely common game found at most casinos. Only two pharaoh heads needed for a line hit. Free games bonus: choose 30 games (1 wild reel), 15 games (2 wild reels) or 5 games (3 wild reels) — all pay the same on average, just differ in volatility. Pick 30 games to lower variance if not in a hurry.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Golden Jungle Grand',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Operates on a 10-game cycle collecting buddha symbols above each reel. After the 10th spin, reels with 2 buddhas turn wild. Format: buddhas per reel (e.g. 2-1-0-0-0). Always play if two of the first three reels are full (except game 10).',
+      playConditions: [
+        { label: 'Two full reels in first 3 (always, except game 10)', operator: '=', value: 'e.g. 2-2-0-0-0', unit: '' },
+        { label: 'Game 10 of 10', operator: '=', value: 'NEVER play', unit: '' },
+        { label: 'Game 9: One full reel in 1-3, or 3 buddhas in 1-4', operator: '=', value: 'e.g. 2-0-0-0-0 or 1-1-0-1-0', unit: '' },
+        { label: 'Game 8: Full reel + 1 extra in 1-3, or 3 buddhas in 1-4', operator: '=', value: 'e.g. 2-1-0-0-0 or 1-0-1-1-0', unit: '' },
+        { label: 'Games 3-7: Full reel + buddhas in other two of 1-3, or 3 in 1-4', operator: '=', value: 'e.g. 2-1-1-0-0 or 1-1-0-1-0', unit: '' },
+        { label: 'Game 2: One full reel in 1-3, or 2 buddhas in 1-4', operator: '=', value: 'e.g. 2-0-0-0-0 or 1-1-0-0-0', unit: '' },
+        { label: 'Game 1: Two buddhas in first 3 reels', operator: '=', value: 'e.g. 1-1-0-0-0', unit: '' },
+      ],
+      notes:
+        'High variance "all or nothing" game — on spin 10 you either get shafted (1-2 wild reels) or make a killing (3-4 wild reels). Need 3+ of the first 4 reels wild for good profit. Only one buddha can land per reel per spin. Free games bonus is hard to land but pays handsomely. Full screen (blackout) of wilds pays 133.3x bet.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'IGT Classic Hits: Coyote Moon / Money Storm / Lobstermania Deluxe',
+    manufacturer: 'IGT',
+    strategy: {
+      description:
+        'Three titles each with three must-hit-by progressives (top/middle/bottom) across five bet levels — 15 progressives per machine. Breakeven entry points listed by bet level.',
+      playConditions: [
+        { label: 'Top progressive @ $0.50 bet', operator: '>=', value: 194, unit: '$' },
+        { label: 'Top progressive @ $1.00 bet', operator: '>=', value: 388, unit: '$' },
+        { label: 'Top progressive @ $1.50 bet', operator: '>=', value: 582, unit: '$' },
+        { label: 'Top progressive @ $2.50 bet', operator: '>=', value: 970, unit: '$' },
+        { label: 'Top progressive @ $5.00 bet', operator: '>=', value: 1940, unit: '$' },
+        { label: 'Middle progressive @ $0.50 bet', operator: '>=', value: 48, unit: '$' },
+        { label: 'Middle progressive @ $1.00 bet', operator: '>=', value: 96, unit: '$' },
+        { label: 'Middle progressive @ $1.50 bet', operator: '>=', value: 144, unit: '$' },
+        { label: 'Middle progressive @ $2.50 bet', operator: '>=', value: 240, unit: '$' },
+        { label: 'Middle progressive @ $5.00 bet', operator: '>=', value: 480, unit: '$' },
+        { label: 'Bottom progressive @ $0.50 bet', operator: '>=', value: 19, unit: '$' },
+        { label: 'Bottom progressive @ $1.00 bet', operator: '>=', value: 38, unit: '$' },
+        { label: 'Bottom progressive @ $1.50 bet', operator: '>=', value: 57, unit: '$' },
+        { label: 'Bottom progressive @ $2.50 bet', operator: '>=', value: 95, unit: '$' },
+        { label: 'Bottom progressive @ $5.00 bet', operator: '>=', value: 190, unit: '$' },
+      ],
+      notes:
+        'Numbers above are breakeven — wait higher for bigger profit. Memorize bottom progressive numbers (chased most often). Quick math: meter needs ~95% of MHB — take 10% of progressive, halve it, subtract from MHB. Top progressive rarely worth chasing (locks you up for hours). Hit odds per spin: bottom 1/456, middle 1/3,829, top 1/58,257. Progressive meters also increase during free games. Only the "Deluxe" versions have MHBs — tap "Switch Games" if you don\'t see progressives. Check all bet levels without betting by tapping "Bet Per Line" on touchscreen. RTP ~91.4%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Jackpot Catcher: Sun / Moon',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features glowing rings that lock on the reels for three spins. If a credit value symbol lands within a glowing ring, you win that amount. Each ring has three internal segments showing spins remaining.',
+      playConditions: [
+        { label: 'Active glowing rings (green 2x=2, pink 3x=3)', operator: '>=', value: 5, unit: 'rings' },
+      ],
+      notes:
+        'Very lucrative newer game most APs don\'t know about. Common to find plays and you can get in/out quickly with limited investment. Landing a second sun/moon in an active ring refills segments and upgrades multiplier: yellow -> green 2x -> pink 3x -> red 5x. Special Jackpot Catcher Spins (regular/deluxe/ultra) can cover the entire board. During free games bonus, accumulated rings stay the entire time and don\'t disappear.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Kraken Unleashed: Lobster Bay / Wild Vikings / Dive for Five',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features wood panels with credit prizes that land on reels and shift down one position every spin. Landing six wood panels triggers a hold & spin feature. Panels often first land in the top row then shift down in stacks up to four tall.',
+      playConditions: [
+        { label: 'Wood panels in top row', operator: '>=', value: 2, unit: '' },
+        { label: 'OR 1 panel top row + 2 panels middle row', operator: '=', value: 'Yes', unit: '' },
+        { label: 'Aggressive: Any panel in top row', operator: '=', value: 'Yes', unit: '(unless stack of 4 with bottom gone)' },
+      ],
+      notes:
+        'One of the best under-the-radar games — most APs don\'t know about it. Common to find plays and can win big with limited investment. Losses are minimal (only a few spins needed). Wood panels only appear in reels 1-4. Smaller credit panels tend to come in taller stacks, making them more lucrative for triggering bonus. Good line hits are very infrequent — most payout comes from bonus. Usually comes in four denominations — check all bet levels on each.',
     },
     casinoIndexes: [],
   },
