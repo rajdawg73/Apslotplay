@@ -1,6 +1,6 @@
 export const sampleCasinos = [];
 
-export const SEED_VERSION = 7;
+export const SEED_VERSION = 8;
 
 export const sampleMachines = [
   {
@@ -799,6 +799,169 @@ export const sampleMachines = [
       ],
       notes:
         'WARNING: Uncapped progressive. Sticky wilds make this better than standard uncapped progressives — common to find, quick/low-cost play with big upside. Reel 4 sticky wilds not very lucrative alone but good chance of landing additional wilds. Treasure chest in reels 1/5 can add 1-5 wild coins to middle reels. Skull wild coins expand to fill entire reel for 3 spins. Mini bonus: reels 2-4 sticky, minor: 2-5 sticky, maxi: all 5 sticky. Treasure chest during bonus can transform non-sticky reel to sticky. Bonus is very volatile — multiple wild reels = huge wins, but can also be weak. All meters reset to 5, capped at 99. Flames appear at 11 free games but do NOT indicate greater chance. Puff of smoke on reel 5 during suspense spin = bonus about to trigger. Free games meters shown on bet pad — check each bet level individually for sticky wilds.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Ocean Magic Bubble Boost',
+    manufacturer: 'IGT',
+    strategy: {
+      description:
+        'Features bubbles on 6 reels that move up one position per spin. Bubbles pop on Ocean Magic symbols, turning adjacent symbols wild. Unpoped bubbles move into three MHB meters: green Lagoon Bonus (reels 1-2, MHB 60), blue Ocean Bonus (reels 3-4, MHB 50), red Reef Bonus (reels 5-6, MHB 60). Multiplier bubbles count as their multiplier value.',
+      playConditions: [
+        { label: 'Conservative (85-88% RTP): any bonus within', operator: '<=', value: 5, unit: 'bubbles away' },
+        { label: 'Conservative: any two bonuses within', operator: '<=', value: 10, unit: 'bubbles away (total)' },
+        { label: 'Conservative: all three bonuses within', operator: '<=', value: 15, unit: 'bubbles away (total)' },
+        { label: 'Medium (89-92% RTP): any bonus within', operator: '<=', value: 6, unit: 'bubbles away' },
+        { label: 'Medium: any two bonuses within', operator: '<=', value: 12, unit: 'bubbles away (total)' },
+        { label: 'Medium: all three bonuses within', operator: '<=', value: 18, unit: 'bubbles away (total)' },
+        { label: 'Aggressive (92%+ RTP): any bonus within', operator: '<=', value: 7, unit: 'bubbles away' },
+        { label: 'Aggressive: any two bonuses within', operator: '<=', value: 14, unit: 'bubbles away (total)' },
+        { label: 'Aggressive: all three bonuses within', operator: '<=', value: 21, unit: 'bubbles away (total)' },
+        { label: 'Left behind bubbles: bubbles in first 3 reels', operator: '>=', value: 6, unit: '(jackpot bubbles always a play)' },
+      ],
+      notes:
+        'One of the best new AP games. Many APs dismiss it after getting burned by volatile bonuses — makes plays easier to find. Triple combo plays are especially lucrative and often overlooked because numbers look far from MHB. Count top-row bubbles as already in meter (guaranteed next spin). Non-bubble boost mode has same entry points — slower accumulation but double symbol pays. Bubbles can combine into multipliers up to 20x (increment meter by multiplier value). Can enter bonus above MHB count. Bonuses are extremely high variance (3x to 300x) but three meters smooth out the swings. After bonus, unpopped bubbles return to meter (doesn\'t fully reset). Great for card pulling — pull card the spin before final bubble triggers MHB. Foghorn during boost mode adds up to 30 bubbles. Lagoon Bonus = blue mermaid (pops bubbles), Reef = red mermaid (enchants reels), Ocean = both mermaids. Fresh bet levels start at 25-20-25. Four denominations, 10 bet levels each. Reel 2 bubbles most valuable. Aggressive on low RTP = get killed.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Panther\'s Throne / Tiger\'s Throne',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Pink gems land on reels and turn into locked frames. The panther/tiger randomly roars and turns all locked frames into wilds. After the roar feature, locked frames disappear.',
+      playConditions: [
+        { label: 'Locked frames with at least one in each of first 3 reels', operator: '>=', value: 4, unit: 'frames' },
+        { label: 'OR locked frames anywhere', operator: '>=', value: 9, unit: 'frames' },
+      ],
+      notes:
+        'Between 4 and 9 frames, focus on frames in first 3 reels — avoid plays concentrated on the right side. Better if frames form line hits (40 paylines), but additional frames usually land before roar triggers. Special panther/tiger symbols with up/down arrows can land in frame spaces and expand to fill entire reel as wild (frames don\'t disappear). During roar, game can randomly add 2x and 3x wild multipliers (3x only in reels 4-5). Symbols above reels (pink gems, 2x, 3x) are cosmetic — same on every bet level, no advantage. Locked frames do NOT transfer into free games bonus. During free games, landing wilds locks them for entire bonus duration. No progressives/large jackpots — more payout goes to base game and roar feature. Bet pad shows frame count per bet level. RTP 85%–95%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Rocket Rumble',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features four MHB progressive free games meters: blue (resets 8, MHB 15), green (resets 10, MHB 20), purple (resets 20, MHB 35) and red (resets 50, MHB 100). Symbol upgrades during bonus make payouts non-linear — bigger hits deeper into bonus.',
+      playConditions: [
+        { label: 'Blue (conservative 88-90% RTP)', operator: '>=', value: 14, unit: '' },
+        { label: 'Green (conservative)', operator: '>=', value: 18, unit: '' },
+        { label: 'Purple (conservative)', operator: '>=', value: 33, unit: '' },
+        { label: 'Red (conservative)', operator: '>=', value: 99, unit: '' },
+        { label: 'Blue (aggressive 92-94% RTP)', operator: '>=', value: 13, unit: '' },
+        { label: 'Green (aggressive)', operator: '>=', value: 17, unit: '' },
+        { label: 'Purple (aggressive)', operator: '>=', value: 31, unit: '' },
+        { label: 'Red (aggressive)', operator: '>=', value: 97, unit: '' },
+      ],
+      notes:
+        'Combo plays: if multiple meters within 1-2 of playable, can be slightly more aggressive. Example: blue at 13 + green at 17 — chase blue, if it raises green to 18, continue. But don\'t be overly aggressive with small meters hoping to bring large ones in range. RED is extremely risky — can take hours to move (5-10 hours stuck at a number). Red pays 1000-2500 units but only recommended for card building. Purple can take several hours — have 400 units on hand. Retriggers start on last spin (max: blue 20, green 25, purple 40, red 100). Entering red at 100 = no retriggers possible. 2x and 3x multiplier wilds on middle reels — multiplied together (three 3x = 27x). Rocket Boost meter above reel 1 is entertainment only — no advantage. New installs can start with playable meters. Check bet pad — check all denominations. RTP: 88%, 90%, 92% or 94%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Stack Up Pays: Island Riches / Sakura Riches / Ascending Fortunes: Jewel Oasis / Pagoda Rising',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features five MHB progressive free games meters that build up reel expansions (increasing ways to win) during 10 free games. Mega (red): 250-350, Grand (orange): 200-250, Major (purple): 150-200, Minor (green): 100-150, Mini (blue): 75-125.',
+      playConditions: [
+        { label: 'Mega (red) — solo, lowest RTP (86.09%)', operator: '>=', value: 332, unit: '' },
+        { label: 'Grand (orange) — solo', operator: '>=', value: 243, unit: '' },
+        { label: 'Major (purple) — solo', operator: '>=', value: 192, unit: '' },
+        { label: 'Minor (green) — solo', operator: '>=', value: 141, unit: '' },
+        { label: 'Mini (blue) — solo', operator: '>=', value: 118, unit: '' },
+      ],
+      notes:
+        'Extremely high variance — bonus payouts vary wildly. Expect frequent losses with occasional massive hits. Solo numbers give ~2-4% edge on lowest RTP. Use calculator for more accurate entries (factors in all 5 meters). Avg payouts: mega ~210 units, grand ~100, major ~60, minor ~30, mini ~20. Free games can trigger early via 3 scatters or random pick bonus. Scatter symbols can add up to 5 expansions per meter (not just 1). No progressive jackpots — free games account for huge chunk of overall return. During bonus, all 5 reels can reach max 10 symbols tall = 100,000 ways to win. Check bet pad — multiple denominations. Ascending Fortunes is a reskin that plays identically, but some versions HIDE meter numbers — must estimate from circle positions on tracks above reels. RTP: 15 settings from 86.09% to 94.16%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Super Winning Streak: Lion Eyes / Wolf Eyes',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Features persistent wilds (lion/wolf heads) that move down one position per spin. Line hits involving a lion/wolf head initiate a winning streak meter below the reels. Three consecutive line hits after that trigger 7+ free spins, with auto-spins to extend the streak and increase free spin count.',
+      playConditions: [
+        { label: 'Active winning streak: lion/wolf tab + first Any Win tab highlighted', operator: '=', value: 'Yes', unit: '(purple border on both)' },
+        { label: 'OR just lion/wolf tab highlighted + persistent wilds in first 4 reels', operator: '=', value: 'Yes', unit: '' },
+        { label: 'OR persistent wilds in first 4 reels (with downward arrow)', operator: '>=', value: 1, unit: '' },
+        { label: 'OR credit/jackpot persistent wilds worth >= 10x bet (any reel)', operator: '>=', value: 1, unit: '' },
+        { label: 'OR special persistent wilds (Wild Blast/Lion Blast/Double Spins/Unicow)', operator: '>=', value: 1, unit: '(any reel)' },
+      ],
+      notes:
+        'IMPORTANT: Only lion/wolf heads WITH a downward arrow on the bottom of the circle are persistent — ones without arrows disappear next spin. Also, bottom row wilds move off screen next spin — don\'t count those. Most plays won\'t trigger free spins, but investment is small with potentially huge reward. Line hits with wilds can still pay well without triggering streak. Some setups guarantee free spins (e.g. first Any Win highlighted + adjacent persistent wilds on top row in reels 2 and 3). Special wilds: Wild Blast adds up to 1 wild per reel (activates after streak ends to continue it). Lion/Wolf Blast adds premium symbols similarly. Double Spins doubles free spins count. Unicow enters streak mode + awards Double Spins + two Wild Blasts + two Lion/Wolf Blasts. Jackpot wilds can contain mini/minor/major/grand. Persistent wilds cannot appear in reel 1. During bonus, last-spin streak gets extra spins until streak ends.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Wheel Frenzy: Frights N\' Delights / Genie Unleashed',
+    manufacturer: '',
+    strategy: {
+      description:
+        'Players collect coins in two meters below a giant wheel. Six coins in either meter triggers a wheel spin. Different bet levels have different "active" reels for coin collection, but the game is gaffed to make collection fairly even across bet levels.',
+      playConditions: [
+        { label: 'Either left or right meter coins collected', operator: '>=', value: 5, unit: 'coins' },
+        { label: 'OR total coins between both meters', operator: '>=', value: 6, unit: 'coins' },
+      ],
+      notes:
+        'Bet levels have different active reels (75 credit = reel 1 only, 150 credit = reels 1-3, others = all 5) but game is gaffed for even collection across bet levels. Larger bets have slightly higher RTP so may accrue coins marginally faster — play same strategy across all levels. Wheel includes major/grand jackpots, credit prizes, and 2x multiplier that doubles all wheel values and respins (up to four 2x multipliers). Smaller credit prizes weighted to hit more often — large yellow wedges are misleading. Wheel boost feature can randomly activate for 5 spins, adding up to 8x multiplier on all wedges. Stack of 4 treasure chests on active reel = pick feature (true pick — equal chance of credit values, jackpots, or up to 5 coins added to meter). Check bet pad. RTP: 85%, 87%, 89%, 91%, 93%, 95% or 96%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Winning Wings: Butterflies / Fairies',
+    manufacturer: 'Gaming Arts',
+    strategy: {
+      description:
+        'Features winged symbols containing credit prizes that shift down one row every spin. Landing 5+ credit prizes triggers a hold & spin feature.',
+      playConditions: [
+        { label: 'Winged credit prizes (not bottom row, not 5+ on screen)', operator: '>=', value: 3, unit: '' },
+        { label: 'OR winged credit prizes on top row', operator: '>=', value: 2, unit: '' },
+        { label: 'OR two winged prizes totaling', operator: '>=', value: 10, unit: 'x bet' },
+        { label: 'OR one winged prize on top row worth', operator: '>=', value: 20, unit: 'x bet' },
+        { label: 'OR any winged minor or major jackpot prizes', operator: '>=', value: 1, unit: '' },
+      ],
+      notes:
+        'IMPORTANT: Do NOT play if 5+ winged credit prizes currently on screen — means hold & spin just triggered and they\'ll all disappear next spin. Ignore bottom row prizes (disappear next spin). Low-cost play — only a few spins of investment. Expect frequent losses with hold & spin triggers making up for them. Winged symbols can contain mini/minor/major jackpots plus credit prizes (1x-25x bet). Base game line hits are weak — more payback in bonus features. Filling entire board in hold & spin awards mega jackpot. Free games bonus triggers ~1 in 170 spins. Winged prizes don\'t persist from base game into bonus. During bonus, hold & spin trigger chance increases 50%. Both themes (Butterflies/Fairies) play the same. Can check without ticket: tap menu icon, use arrows to cycle bet levels. RTP 86%–96%.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Wizard Strike',
+    manufacturer: 'Konami',
+    strategy: {
+      description:
+        'Features two MHB progressive jackpots — major (hits between $300-$700) and minor (hits between $50-$200). These are FAIR progressives — hit at a random point between reset and MHB (not weighted to the top).',
+      playConditions: [
+        { label: 'Major (85% RTP)', operator: '>=', value: 669.57, unit: '$' },
+        { label: 'Minor (85% RTP)', operator: '>=', value: 175, unit: '$' },
+        { label: 'Major (if minor > $150, combo play)', operator: '>=', value: 661.95, unit: '$' },
+      ],
+      notes:
+        'FAIR progressive — hits at random point between reset and MHB (not weighted to top like most games). Using midpoint in calculations — if hit point goes beyond midpoint, likely lose money; before midpoint = more profit. Over enough plays, evens out. Konami games known for volatility. Free games offers choice: 20 games/60 lines, 12 games/75 lines, or 7 games/100 lines — same average payout, different volatility. Recommend 20 free games to lower variance. Crucial to spin at lowest bet level to reduce variance. Higher bets = more gambling. Min bet avoids handpays and W-2Gs. Use calculators to adjust for higher RTP machines.',
+    },
+    casinoIndexes: [],
+  },
+  {
+    name: 'Wonder 4 Collection',
+    manufacturer: 'Aristocrat',
+    strategy: {
+      description:
+        'Play four games simultaneously (Buffalo, Wild Panther, Pompeii, Fire Light). Each has progressive free games meters — Super Free Games Collection (blue) and Free Games Collection (red). Blue/red jewels in reel 5 increment meters. Blue plays in 4 windows (4x free games), red plays in 1 window.',
+      playConditions: [
+        { label: 'Wild Panther / Pompeii — blue meter', operator: '>=', value: 50, unit: '' },
+        { label: 'Wild Panther / Pompeii — red meter', operator: '>=', value: 40, unit: '' },
+        { label: 'Buffalo — blue meter', operator: '>=', value: 48, unit: '' },
+        { label: 'Buffalo — red meter', operator: '>=', value: 38, unit: '' },
+        { label: 'Fire Light — blue meter', operator: '>=', value: 45, unit: '' },
+        { label: 'Fire Light — red meter', operator: '>=', value: 35, unit: '' },
+      ],
+      notes:
+        'Select all four windows as the same game (whichever has best numbers). Aristocrat free games are extremely volatile — most reds will be duds, occasional huge wins. Blue usually pays well (4x free games = better chance at multiplier line hits). Chasing blue can take 1-6 hours — have 600 units minimum (1000 safer). Don\'t chase blue unless card building or playing for points/offers. Great for card building — 4 simultaneous games significantly lowers base game volatility. Reset values differ by game: Wild Panther/Pompeii = 12, Buffalo = 10, Fire Light = 7 (why entry points differ). Wild Panther and Pompeii are basically same game. Fire Light is least volatile. All meters capped at 99 — not guaranteed to hit there. Check meters on bet pad — need ticket to check different bet levels.',
     },
     casinoIndexes: [],
   },
