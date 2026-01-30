@@ -59,11 +59,11 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  height: 64px;
 }
 
 .header-logo {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--accent);
   text-decoration: none;
@@ -80,10 +80,10 @@ a:hover {
 }
 
 .header-nav a {
-  padding: 6px 14px;
-  border-radius: 6px;
+  padding: 10px 18px;
+  border-radius: 8px;
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
   transition: all 0.15s;
 }
@@ -103,17 +103,17 @@ a:hover {
 /* Search Bar */
 .search-container {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .search-input {
   width: 100%;
-  padding: 14px 18px 14px 48px;
+  padding: 16px 18px 16px 48px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--text-primary);
-  font-size: 1rem;
+  font-size: 1.05rem;
   outline: none;
   transition: border-color 0.15s;
 }
@@ -132,31 +132,31 @@ a:hover {
   top: 50%;
   transform: translateY(-50%);
   color: var(--text-muted);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 /* Filter Bar */
 .filter-bar {
   display: flex;
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
   align-items: center;
 }
 
 .filter-label {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
   margin-right: 4px;
 }
 
 .filter-chip {
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: 20px;
   border: 1px solid var(--border);
   background: var(--bg-secondary);
   color: var(--text-secondary);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.15s;
 }
@@ -172,11 +172,26 @@ a:hover {
   color: white;
 }
 
+.filter-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border);
+  margin: 0 4px;
+}
+
+/* Result Count */
+.result-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  padding-left: 2px;
+}
+
 /* Machine Cards */
 .machine-grid {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .machine-card {
@@ -184,31 +199,27 @@ a:hover {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px 20px;
-  cursor: pointer;
   transition: all 0.15s;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-.machine-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow);
-  text-decoration: none;
-  color: inherit;
 }
 
 .machine-card-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .machine-card-name {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 0;
+}
+
+.machine-card-name:hover {
+  color: var(--accent);
+  text-decoration: none;
 }
 
 .machine-card-manufacturer {
@@ -217,40 +228,110 @@ a:hover {
   background: var(--bg-secondary);
   padding: 2px 10px;
   border-radius: 12px;
+  flex-shrink: 0;
+}
+
+/* Inline Strategy on Cards */
+.machine-card-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 10px;
 }
 
 .machine-card-conditions {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .condition-badge {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 4px 10px;
+  padding: 6px 12px;
   border-radius: 6px;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 500;
   background: var(--green-bg);
   color: var(--green);
+  line-height: 1.4;
 }
 
+/* Notes Toggle */
+.machine-card-notes-section {
+  margin-bottom: 10px;
+}
+
+.notes-toggle {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 0;
+  transition: color 0.15s;
+}
+
+.notes-toggle:hover {
+  color: var(--accent-hover);
+}
+
+.machine-card-notes {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: 1.7;
+  margin-top: 8px;
+  padding: 12px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border-left: 3px solid var(--accent);
+}
+
+/* Casino Tags */
 .casino-tags {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 6px;
 }
 
 .casino-tag {
-  font-size: 0.75rem;
-  padding: 2px 8px;
+  font-size: 0.8rem;
+  padding: 3px 10px;
   border-radius: 4px;
   background: var(--bg-input);
   color: var(--text-secondary);
+}
+
+/* Favorite Button */
+.fav-btn {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 4px;
+  line-height: 1;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.fav-btn:hover {
+  color: var(--yellow);
+  transform: scale(1.15);
+}
+
+.fav-btn.fav-active {
+  color: var(--yellow);
+}
+
+.fav-btn-lg {
+  font-size: 1.8rem;
+  padding: 4px 8px;
 }
 
 /* Detail Page */
@@ -260,7 +341,8 @@ a:hover {
   gap: 6px;
   color: var(--text-secondary);
   margin-bottom: 20px;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  padding: 8px 0;
 }
 
 .detail-back:hover {
@@ -270,6 +352,12 @@ a:hover {
 
 .detail-header {
   margin-bottom: 24px;
+}
+
+.detail-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .detail-title {
@@ -292,10 +380,16 @@ a:hover {
 }
 
 .detail-section-title {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.detail-section-hint {
+  font-size: 0.85rem;
   color: var(--text-muted);
   margin-bottom: 12px;
 }
@@ -318,16 +412,20 @@ a:hover {
   padding: 12px 16px;
   background: var(--bg-secondary);
   border-radius: 8px;
+  gap: 12px;
 }
 
 .condition-label {
   font-weight: 500;
+  font-size: 0.95rem;
 }
 
 .condition-value {
   font-weight: 700;
   color: var(--green);
   font-size: 1.1rem;
+  text-align: right;
+  flex-shrink: 0;
 }
 
 .detail-notes {
@@ -336,25 +434,51 @@ a:hover {
   line-height: 1.7;
 }
 
-.detail-actions {
+/* Casino Toggle Chips (Detail Page) */
+.casino-toggle-list {
   display: flex;
   gap: 10px;
-  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.casino-toggle-chip {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.casino-toggle-chip:hover {
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.casino-toggle-chip.active {
+  border-color: var(--green);
+  background: var(--green-bg);
+  color: var(--green);
+  font-weight: 500;
 }
 
 /* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  padding: 10px 20px;
+  padding: 12px 22px;
   border-radius: 8px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
   border: none;
   cursor: pointer;
   transition: all 0.15s;
   text-decoration: none;
+  min-height: 44px;
 }
 
 .btn:hover {
@@ -391,8 +515,9 @@ a:hover {
 }
 
 .btn-small {
-  padding: 6px 12px;
-  font-size: 0.8rem;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  min-height: 40px;
 }
 
 /* Forms */
@@ -402,7 +527,7 @@ a:hover {
 
 .form-label {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-secondary);
   margin-bottom: 6px;
@@ -412,12 +537,12 @@ a:hover {
 .form-textarea,
 .form-select {
   width: 100%;
-  padding: 10px 14px;
+  padding: 12px 14px;
   background: var(--bg-input);
   border: 1px solid var(--border);
   border-radius: 8px;
   color: var(--text-primary);
-  font-size: 0.95rem;
+  font-size: 1rem;
   outline: none;
   transition: border-color 0.15s;
   font-family: inherit;
@@ -456,20 +581,6 @@ a:hover {
   margin-bottom: 10px;
 }
 
-.remove-btn {
-  background: none;
-  border: none;
-  color: var(--red);
-  cursor: pointer;
-  font-size: 1.2rem;
-  padding: 8px;
-  border-radius: 6px;
-}
-
-.remove-btn:hover {
-  background: var(--red-bg);
-}
-
 /* Checkbox group */
 .checkbox-group {
   display: flex;
@@ -481,13 +592,13 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px;
+  padding: 10px 16px;
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.15s;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 .checkbox-item:hover {
@@ -521,17 +632,17 @@ a:hover {
 }
 
 .casino-info h3 {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
 }
 
 .casino-info p {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
 }
 
 .casino-machine-count {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
   margin-top: 4px;
 }
@@ -553,6 +664,31 @@ a:hover {
   flex: 1;
 }
 
+/* Data Management Section */
+.data-section {
+  margin-top: 16px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.data-section .detail-section-title {
+  margin-top: 0;
+}
+
+.data-hint {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.data-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 /* Empty State */
 .empty-state {
   text-align: center;
@@ -561,13 +697,13 @@ a:hover {
 }
 
 .empty-state h3 {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   margin-bottom: 8px;
   color: var(--text-secondary);
 }
 
 .empty-state p {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   margin-bottom: 16px;
 }
 
@@ -584,27 +720,72 @@ a:hover {
   font-weight: 700;
 }
 
+/* Toast Notifications */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  z-index: 1000;
+  animation: toast-in 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.toast-success {
+  background: var(--green);
+  color: #fff;
+}
+
+.toast-error {
+  background: var(--red);
+  color: #fff;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 /* Responsive */
 @media (max-width: 640px) {
   .header-inner {
-    height: 52px;
+    height: 58px;
   }
 
   .header-logo {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
 
   .header-nav a {
-    padding: 4px 10px;
-    font-size: 0.85rem;
+    padding: 10px 14px;
+    font-size: 0.95rem;
   }
 
   .main-content {
-    padding: 16px 12px 40px;
+    padding: 16px 14px 40px;
   }
 
   .machine-card {
-    padding: 14px 16px;
+    padding: 16px;
+  }
+
+  .machine-card-name {
+    font-size: 1.05rem;
+  }
+
+  .condition-badge {
+    font-size: 0.8rem;
+    padding: 5px 10px;
   }
 
   .form-row {
@@ -621,13 +802,27 @@ a:hover {
     gap: 12px;
   }
 
-  .detail-actions {
-    flex-direction: column;
+  .detail-title {
+    font-size: 1.4rem;
   }
 
   .casino-card {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+
+  .condition-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .condition-value {
+    text-align: left;
+  }
+
+  .filter-divider {
+    display: none;
   }
 }

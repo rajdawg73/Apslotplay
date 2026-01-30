@@ -1,27 +1,23 @@
 import { useMemo } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { showToast } from '../utils/toast';
 
 export default function MachineDetailPage({ store }) {
   const { id } = useParams();
-  const navigate = useNavigate();
-  const { machines, casinos, deleteMachine } = store;
+  const { machines, casinos, favorites, toggleFavorite, updateMachine } = store;
 
   const machine = useMemo(
     () => machines.find((m) => m.id === id),
     [machines, id],
   );
 
-  const casinoMap = useMemo(() => {
-    const map = {};
-    casinos.forEach((c) => (map[c.id] = c));
-    return map;
-  }, [casinos]);
+  const favSet = useMemo(() => new Set(favorites), [favorites]);
 
   if (!machine) {
     return (
       <div className="empty-state">
         <h3>Machine not found</h3>
-        <p>This machine may have been deleted.</p>
+        <p>This machine may have been removed.</p>
         <Link to="/" className="btn btn-primary">
           Back to Machines
         </Link>
@@ -29,18 +25,19 @@ export default function MachineDetailPage({ store }) {
     );
   }
 
-  const handleDelete = () => {
-    if (window.confirm(`Delete "${machine.name}"? This cannot be undone.`)) {
-      deleteMachine(machine.id);
-      navigate('/');
-    }
-  };
-
+  const isFav = favSet.has(machine.id);
   const strategy = machine.strategy || {};
   const conditions = strategy.playConditions || [];
-  const machineCasinos = (machine.casinoIds || [])
-    .map((cid) => casinoMap[cid])
-    .filter(Boolean);
+  const machineCasinoIds = machine.casinoIds || [];
+
+  const handleToggleCasino = (casinoId) => {
+    const current = machine.casinoIds || [];
+    const updated = current.includes(casinoId)
+      ? current.filter((cid) => cid !== casinoId)
+      : [...current, casinoId];
+    updateMachine(machine.id, { casinoIds: updated });
+    showToast('Casino updated');
+  };
 
   return (
     <>
@@ -49,7 +46,16 @@ export default function MachineDetailPage({ store }) {
       </Link>
 
       <div className="detail-header">
-        <h1 className="detail-title">{machine.name}</h1>
+        <div className="detail-title-row">
+          <button
+            className={`fav-btn fav-btn-lg ${isFav ? 'fav-active' : ''}`}
+            onClick={() => toggleFavorite(machine.id)}
+            aria-label={isFav ? 'Remove from favorites' : 'Add to favorites'}
+          >
+            {isFav ? '\u2605' : '\u2606'}
+          </button>
+          <h1 className="detail-title">{machine.name}</h1>
+        </div>
         {machine.manufacturer && (
           <p className="detail-manufacturer">by {machine.manufacturer}</p>
         )}
@@ -86,31 +92,26 @@ export default function MachineDetailPage({ store }) {
         </div>
       )}
 
-      {machineCasinos.length > 0 && (
+      {casinos.length > 0 && (
         <div className="detail-section">
           <h2 className="detail-section-title">Found At</h2>
-          <div className="casino-tags">
-            {machineCasinos.map((c) => (
-              <span key={c.id} className="casino-tag">
+          <p className="detail-section-hint">
+            Tap a casino to toggle it for this machine.
+          </p>
+          <div className="casino-toggle-list">
+            {casinos.map((c) => (
+              <button
+                key={c.id}
+                className={`casino-toggle-chip ${machineCasinoIds.includes(c.id) ? 'active' : ''}`}
+                onClick={() => handleToggleCasino(c.id)}
+              >
+                {machineCasinoIds.includes(c.id) ? '\u2713 ' : ''}
                 {c.name}
-                {c.location ? ` - ${c.location}` : ''}
-              </span>
+              </button>
             ))}
           </div>
         </div>
       )}
-
-      <div className="detail-actions">
-        <Link
-          to={`/machine/${machine.id}/edit`}
-          className="btn btn-secondary"
-        >
-          Edit Machine
-        </Link>
-        <button className="btn btn-danger" onClick={handleDelete}>
-          Delete Machine
-        </button>
-      </div>
     </>
   );
 }

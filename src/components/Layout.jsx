@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Toast from './Toast';
 
 export default function Layout({ children }) {
   return (
@@ -10,12 +11,12 @@ export default function Layout({ children }) {
           </Link>
           <nav className="header-nav">
             <Link to="/">Machines</Link>
-            <Link to="/machine/new">+ Add</Link>
             <Link to="/casinos">Casinos</Link>
           </nav>
         </div>
       </header>
       <main className="main-content">{children}</main>
+      <Toast />
     </>
   );
 }

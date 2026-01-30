@@ -8,7 +8,6 @@ function seedIfNeeded() {
   const currentVersion = localStorage.getItem(SEED_KEY);
   if (currentVersion === String(SEED_VERSION)) return;
 
-  // Add any machines that don't already exist (matched by name)
   const existingNames = new Set(storage.getMachines().map((m) => m.name));
 
   sampleMachines.forEach((m) => {
@@ -26,19 +25,13 @@ export function useStore() {
 
   const [machines, setMachines] = useState(() => storage.getMachines());
   const [casinos, setCasinos] = useState(() => storage.getCasinos());
+  const [favorites, setFavorites] = useState(() => storage.getFavorites());
 
   const refresh = useCallback(() => {
     setMachines(storage.getMachines());
     setCasinos(storage.getCasinos());
+    setFavorites(storage.getFavorites());
   }, []);
-
-  const addMachine = useCallback(
-    (machine) => {
-      storage.addMachine(machine);
-      refresh();
-    },
-    [refresh],
-  );
 
   const updateMachine = useCallback(
     (id, updates) => {
@@ -48,13 +41,10 @@ export function useStore() {
     [refresh],
   );
 
-  const deleteMachine = useCallback(
-    (id) => {
-      storage.deleteMachine(id);
-      refresh();
-    },
-    [refresh],
-  );
+  const toggleFavorite = useCallback((id) => {
+    storage.toggleFavorite(id);
+    setFavorites(storage.getFavorites());
+  }, []);
 
   const addCasino = useCallback(
     (casino) => {
@@ -84,9 +74,9 @@ export function useStore() {
   return {
     machines,
     casinos,
-    addMachine,
+    favorites,
     updateMachine,
-    deleteMachine,
+    toggleFavorite,
     addCasino,
     updateCasino,
     deleteCasino,

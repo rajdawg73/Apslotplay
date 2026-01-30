@@ -1,5 +1,6 @@
 const MACHINES_KEY = 'ap_slot_machines';
 const CASINOS_KEY = 'ap_slot_casinos';
+const FAVORITES_KEY = 'ap_slot_favorites';
 
 function generateId() {
   if (typeof crypto !== 'undefined' && crypto.randomUUID) {
@@ -43,11 +44,6 @@ export function updateMachine(id, updates) {
   return machines[idx];
 }
 
-export function deleteMachine(id) {
-  const machines = getMachines().filter((m) => m.id !== id);
-  saveMachines(machines);
-}
-
 export function getMachineById(id) {
   return getMachines().find((m) => m.id === id) || null;
 }
@@ -87,7 +83,6 @@ export function updateCasino(id, updates) {
 export function deleteCasino(id) {
   const casinos = getCasinos().filter((c) => c.id !== id);
   saveCasinos(casinos);
-  // Also remove this casino from any machine's casinoIds
   const machines = getMachines().map((m) => ({
     ...m,
     casinoIds: (m.casinoIds || []).filter((cid) => cid !== id),
@@ -97,4 +92,53 @@ export function deleteCasino(id) {
 
 export function getCasinoById(id) {
   return getCasinos().find((c) => c.id === id) || null;
+}
+
+// --- Favorites ---
+
+export function getFavorites() {
+  try {
+    const data = localStorage.getItem(FAVORITES_KEY);
+    return data ? JSON.parse(data) : [];
+  } catch {
+    return [];
+  }
+}
+
+export function saveFavorites(favIds) {
+  localStorage.setItem(FAVORITES_KEY, JSON.stringify(favIds));
+}
+
+export function toggleFavorite(id) {
+  const favs = getFavorites();
+  const idx = favs.indexOf(id);
+  if (idx === -1) {
+    favs.push(id);
+  } else {
+    favs.splice(idx, 1);
+  }
+  saveFavorites(favs);
+  return favs;
+}
+
+// --- Export / Import ---
+
+export function exportAllData() {
+  return JSON.stringify(
+    {
+      machines: getMachines(),
+      casinos: getCasinos(),
+      favorites: getFavorites(),
+      exportedAt: new Date().toISOString(),
+    },
+    null,
+    2,
+  );
+}
+
+export function importAllData(jsonString) {
+  const data = JSON.parse(jsonString);
+  if (data.machines) saveMachines(data.machines);
+  if (data.casinos) saveCasinos(data.casinos);
+  if (data.favorites) saveFavorites(data.favorites);
 }

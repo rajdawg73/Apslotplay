@@ -1,13 +1,17 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
+import * as storage from '../utils/storage';
+import { showToast } from '../utils/toast';
 
 export default function CasinosPage({ store }) {
-  const { casinos, machines, addCasino, updateCasino, deleteCasino } = store;
+  const { casinos, machines, addCasino, updateCasino, deleteCasino, refresh } =
+    store;
 
   const [newName, setNewName] = useState('');
   const [newLocation, setNewLocation] = useState('');
   const [editingId, setEditingId] = useState(null);
   const [editName, setEditName] = useState('');
   const [editLocation, setEditLocation] = useState('');
+  const fileInputRef = useRef(null);
 
   const machineCounts = useMemo(() => {
     const counts = {};
@@ -26,6 +30,7 @@ export default function CasinosPage({ store }) {
     addCasino({ name: newName.trim(), location: newLocation.trim() });
     setNewName('');
     setNewLocation('');
+    showToast('Casino added');
   };
 
   const startEdit = (casino) => {
@@ -47,6 +52,7 @@ export default function CasinosPage({ store }) {
       location: editLocation.trim(),
     });
     cancelEdit();
+    showToast('Casino updated');
   };
 
   const handleDelete = (casino) => {
@@ -56,7 +62,37 @@ export default function CasinosPage({ store }) {
       )
     ) {
       deleteCasino(casino.id);
+      showToast('Casino deleted');
     }
+  };
+
+  const handleExport = () => {
+    const data = storage.exportAllData();
+    const blob = new Blob([data], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `ap-slot-backup-${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('Data exported');
+  };
+
+  const handleImport = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        storage.importAllData(ev.target.result);
+        refresh();
+        showToast('Data imported successfully');
+      } catch {
+        showToast('Invalid backup file', 'error');
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
   };
 
   return (
@@ -103,7 +139,12 @@ export default function CasinosPage({ store }) {
             <div key={casino.id} className="casino-card">
               {editingId === casino.id ? (
                 <div
-                  style={{ display: 'flex', gap: 10, flex: 1, flexWrap: 'wrap' }}
+                  style={{
+                    display: 'flex',
+                    gap: 10,
+                    flex: 1,
+                    flexWrap: 'wrap',
+                  }}
                 >
                   <input
                     type="text"
@@ -163,6 +204,33 @@ export default function CasinosPage({ store }) {
           ))}
         </div>
       )}
+
+      <div className="data-section">
+        <h2 className="detail-section-title" style={{ marginTop: 32 }}>
+          Data Management
+        </h2>
+        <p className="data-hint">
+          Export your data as a backup or import a previous backup.
+        </p>
+        <div className="data-actions">
+          <button className="btn btn-secondary" onClick={handleExport}>
+            Export Backup
+          </button>
+          <button
+            className="btn btn-secondary"
+            onClick={() => fileInputRef.current?.click()}
+          >
+            Import Backup
+          </button>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".json"
+            onChange={handleImport}
+            style={{ display: 'none' }}
+          />
+        </div>
+      </div>
     </>
   );
 }
